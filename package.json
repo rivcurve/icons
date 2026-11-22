@@ -1,0 +1,9 @@
+{
+  "name": "rivcurve",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "npm run dev --workspace @rivcurve/site",
+    "build": "npm run build --workspace @rivcurve/site"
+  }
+}

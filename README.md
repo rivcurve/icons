@@ -25,3 +25,9 @@ python3 scripts/icons.py check
 ## Сайт и выпуск
 
 [Выбранный дизайн главной](docs/design/HOMEPAGE.md) · [План проекта](docs/PROJECT_PLAN.md) · [Дорожная карта](docs/ROADMAP.md)
+
+## Запуск сайта
+
+Из корня проекта выполните `npm install`, затем `npm run dev`. Главная открывается на [localhost:3000](http://localhost:3000). `npm run build` экспортирует сайт в `apps/site/out/`.
+
+Примеры React и Vue показывают проектный API будущих пакетов.

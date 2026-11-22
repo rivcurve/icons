@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T23:48:45+03:00",
+  "title": "Design System: Rivcurve",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm paper"
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink"
+      },
+      "orange": {
+        "role": "accent",
+        "displayName": "Orange field"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Manrope Display",
+        "purpose": "Homepage headline."
+      }
+    },
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "680px"
+      },
+      {
+        "name": "tablet",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Get started",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary entry to the package guide.",
+      "html": "<a class=\"button\" href=\"/docs/\">Get started</a>",
+      "css": ".button { display:inline-flex; align-items:center; justify-content:center; min-height:45px; padding:.65rem 1.05rem; border:1px solid var(--ink,#24231F); border-radius:7px; background:var(--ink,#24231F); color:var(--surface,#FFFDF9); text-decoration:none; font-weight:760; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Icons for real interfaces",
+    "overview": "Present the library and show its real contours doing ordinary work in a files interface.",
+    "keyCharacteristics": [
+      "Warm paper",
+      "Orange first-screen field",
+      "Compact Refined specimens"
+    ],
+    "rules": [
+      {
+        "name": "First action",
+        "body": "Get started precedes Browse icons.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Use original Refined vectors."
+    ],
+    "donts": [
+      "Place icon export in the hero."
+    ]
+  }
+}
