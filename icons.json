@@ -1,10 +1,16 @@
 {
   "schemaVersion": 1,
   "categories": [
-    {"id": "navigation", "label": "Навигация", "icons": ["home", "compass", "map-pin", "arrow-left", "arrow-right", "chevron-down", "menu", "search", "external-link", "layout-grid", "sun", "moon", "x", "check"]},
+    {"id": "navigation", "label": "Навигация", "icons": ["home", "compass", "map-pin", "arrow-left", "arrow-right", "chevron-down", "menu", "search", "external-link", "layout-grid", "sun", "moon", "x", "check", "arrow-up", "arrow-down", "chevron-left", "chevron-right", "chevron-up"]},
+    {"id": "actions", "label": "Действия", "icons": ["plus", "minus", "more-horizontal", "more-vertical", "settings", "filter", "edit", "copy", "trash", "refresh"]},
     {"id": "people", "label": "Пользователи", "icons": ["user", "users", "user-plus", "user-check", "user-minus", "contact-card", "circle-user", "badge-check", "message-circle", "bell"]},
+    {"id": "communication", "label": "Связь", "icons": ["mail", "chat-dots", "phone", "send", "inbox", "bell-off", "link", "share", "at-sign"]},
     {"id": "finance", "label": "Финансы", "icons": ["wallet", "credit-card", "banknote", "coins", "bank", "receipt", "chart-line", "chart-bar", "chart-pie", "currency-exchange"]},
     {"id": "files-data", "label": "Файлы и данные", "icons": ["file", "file-text", "folder", "folder-open", "download", "upload", "database", "table", "image", "archive"]},
-    {"id": "development", "label": "Разработка", "icons": ["code", "terminal", "git-branch", "git-commit", "git-pull-request", "bug", "brackets", "command", "server", "package", "monitor"]}
+    {"id": "development", "label": "Разработка", "icons": ["code", "terminal", "git-branch", "git-commit", "git-pull-request", "bug", "brackets", "command", "server", "package", "monitor"]},
+    {"id": "security", "label": "Безопасность", "icons": ["lock", "lock-open", "shield", "shield-check", "key", "eye", "eye-off"]},
+    {"id": "media", "label": "Медиа", "icons": ["play", "pause", "stop", "volume", "volume-off", "camera", "video", "microphone"]},
+    {"id": "utility", "label": "Утилиты", "icons": ["calendar", "clock", "globe", "bookmark", "heart", "star"]},
+    {"id": "status", "label": "Статусы", "icons": ["info", "circle-help", "triangle-alert", "circle-check", "circle-x", "circle-minus", "loader", "octagon-alert"]}
   ]
 }

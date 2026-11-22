@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { Icon } from "@/components/icon";
-import { icons } from "@/lib/catalog";
+import { searchIcons } from "@/lib/catalog";
 import { catalogHref } from "@/lib/catalog-links";
 
 const starterIcons = ["search", "folder-open", "user-check", "download", "git-branch", "chart-pie"];
@@ -16,9 +16,7 @@ export function QuickFind() {
   const [selection, setSelection] = useState(0);
   const search = query.trim().toLowerCase().replace(/\s+/g, "-");
   const results = search
-    ? icons.filter(({ name }) => name.includes(search)).sort((a, b) =>
-      Number(b.name === search) - Number(a.name === search) ||
-      Number(b.name.startsWith(search)) - Number(a.name.startsWith(search))).slice(0, 6).map(({ name }) => name)
+    ? searchIcons(query).slice(0, 6).map(({ name }) => name)
     : starterIcons;
 
   function open() {

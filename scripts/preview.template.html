@@ -63,7 +63,8 @@
         problems.push(card.dataset.name + ' (размер или цвет)');
       }
       const {x, y, width, height} = samples[0].getBBox();
-      if (width <= 0 || height <= 0 || Math.min(x, y) < 1.99 ||
+      // A single horizontal or vertical centerline has one zero dimension. Its stroke is visible.
+      if (![x, y, width, height].every(Number.isFinite) || (width === 0 && height === 0) || Math.min(x, y) < 1.99 ||
         Math.max(x + width, y + height) > 22.01) problems.push(card.dataset.name + ' (границы)');
     }
     result.hidden = false;

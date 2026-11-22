@@ -7,21 +7,13 @@ import { Button } from "@/components/arc/button/button";
 import { SearchField } from "@/components/arc/search-field/search-field";
 import { Select } from "@/components/arc/select/select";
 import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
-import { categories, icons } from "@/lib/catalog";
+import { categories, searchIcons } from "@/lib/catalog";
 import { catalogHref } from "@/lib/catalog-links";
 
 const sizes = [16, 20, 24] as const;
 type Size = typeof sizes[number];
 const sizeOptions = sizes.map((size) => ({ value: String(size), label: `${size} px` }));
 const categoryOptions = [{ value: "all", label: "All categories" }, ...categories.map(({ id, label }) => ({ value: id, label }))];
-
-const aliases: Record<string, string> = {
-  home: "house start", "map-pin": "location marker", search: "find magnifying glass",
-  users: "group people", wallet: "money payment", banknote: "cash bill money",
-  download: "save export", upload: "send import", database: "storage data sql",
-  "file-text": "document text", image: "photo picture", archive: "box storage",
-  "git-branch": "version control branch", bug: "debug error",
-};
 
 export function Catalog() {
   const [query, setQuery] = useState("");
@@ -53,14 +45,7 @@ export function Catalog() {
     window.history.replaceState(null, "", catalogHref(params));
   }
 
-  const search = query.trim().toLowerCase();
-  const terms = search.split(/\s+/).filter(Boolean);
-  const results = icons.filter(({ name, category: group }) =>
-    (category === "all" || category === group) &&
-    terms.every((term) => `${name} ${aliases[name] ?? ""}`.includes(term))
-  );
-  const rank = (name: string) => name === search ? 0 : name.startsWith(search) ? 1 : 2;
-  if (search) results.sort((first, second) => rank(first.name) - rank(second.name));
+  const results = searchIcons(query, category);
 
   return (
     <section aria-label="Icon catalog">
