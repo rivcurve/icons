@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог иконок · Refined</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #272522; background: #f7f6f2; font: 15px system-ui, sans-serif; }
+  main { width: min(1380px, 100%); margin: auto; padding: 38px max(18px, 3vw) 46px; }
+  header { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; border-bottom: 1px solid #dedbd2; padding-bottom: 20px; }
+  header h1 { margin: 0 0 6px; font-size: clamp(29px, 4vw, 51px); letter-spacing: -.055em; font-weight: 620; }
+  header p { margin: 0; color: #5b574e; }
+  label { display: grid; gap: 5px; }
+  input { padding: 9px 12px; border: 1px solid #a39e90; border-radius: 6px; background: #fff; color: #272522; font: inherit; width: min(260px, 78vw); }
+  h2 { font-size: 17px; font-weight: 650; margin: 25px 0 10px; }
+  ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; padding: 0; margin: 0; }
+  @media (min-width: 900px) { ul { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  li { overflow: hidden; background: #fff; border: 1px solid #dedbd2; border-radius: 7px; }
+  code { display: block; padding: 8px 9px; font: 11px ui-monospace, monospace; }
+  .samples { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; justify-items: center; padding: 6px 3px; }
+  .samples span { display: grid; justify-items: center; align-items: end; grid-template-rows: 24px auto; gap: 2px; }
+  .samples small { font: 9px ui-monospace, monospace; opacity: .72; }
+  .light { background: #f4f3ee; color: #232b2a; }
+  .dark { background: #232b2a; color: #f4f3ee; }
+  [hidden] { display: none !important; }
+  #geometry { margin-top: 22px; color: #5b574e; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>Каталог иконок</h1><p>Refined · светлый и тёмный фон · размеры в px</p></div>
+    <label>Имя иконки <input type="search" id="filter" placeholder="Например, wallet"></label>
+  </header>
+  <p id="empty" hidden role="status">Иконки не найдены.</p>
+  <!-- CATALOG -->
+  <p id="geometry" hidden></p>
+</main>
+<script>
+  const filter = document.querySelector('#filter');
+  filter.addEventListener('input', () => {
+    const query = filter.value.trim().toLowerCase();
+    for (const section of document.querySelectorAll('section')) {
+      for (const card of section.querySelectorAll('li')) {
+        card.hidden = !card.dataset.name.includes(query);
+      }
+      section.hidden = !section.querySelector('li:not([hidden])');
+    }
+    document.querySelector('#empty').hidden = !!document.querySelector('section:not([hidden])');
+  });
+
+  if (new URLSearchParams(location.search).has('qa')) {
+    const result = document.querySelector('#geometry');
+    const cards = [...document.querySelectorAll('li')];
+    const problems = [];
+    for (const card of cards) {
+      const samples = [...card.querySelectorAll('svg')];
+      if (samples.length !== 6 || samples.some((svg, i) =>
+        svg.getBoundingClientRect().width !== [16, 20, 24][i % 3] ||
+        svg.getBoundingClientRect().height !== [16, 20, 24][i % 3] ||
+        getComputedStyle(svg).color !== (i < 3 ? 'rgb(35, 43, 42)' : 'rgb(244, 243, 238)'))) {
+        problems.push(card.dataset.name + ' (размер или цвет)');
+      }
+      const {x, y, width, height} = samples[0].getBBox();
+      if (width <= 0 || height <= 0 || Math.min(x, y) < 1.99 ||
+        Math.max(x + width, y + height) > 22.01) problems.push(card.dataset.name + ' (границы)');
+    }
+    result.hidden = false;
+    result.dataset.status = problems.length ? 'failed' : 'passed';
+    result.textContent = problems.length ? problems.join(', ') : cards.length + ' SVG · размеры, цвет и границы в норме';
+  }
+</script>
+</body>
+</html>

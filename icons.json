@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {"id": "navigation", "label": "Навигация", "icons": ["home", "compass", "map-pin", "arrow-left", "arrow-right", "chevron-down", "menu", "search", "external-link", "layout-grid"]},
+    {"id": "people", "label": "Пользователи", "icons": ["user", "users", "user-plus", "user-check", "user-minus", "contact-card", "circle-user", "badge-check", "message-circle", "bell"]},
+    {"id": "finance", "label": "Финансы", "icons": ["wallet", "credit-card", "banknote", "coins", "bank", "receipt", "chart-line", "chart-bar", "chart-pie", "currency-exchange"]},
+    {"id": "files-data", "label": "Файлы и данные", "icons": ["file", "file-text", "folder", "folder-open", "download", "upload", "database", "table", "image", "archive"]},
+    {"id": "development", "label": "Разработка", "icons": ["code", "terminal", "git-branch", "git-commit", "git-pull-request", "bug", "brackets", "command", "server", "package"]}
+  ]
+}
