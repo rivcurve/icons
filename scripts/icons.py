@@ -92,16 +92,17 @@ def load_catalog():
     manifest = json.loads((ROOT / "icons.json").read_text(encoding="utf-8"))
     require(manifest["schemaVersion"] == 1, "неподдерживаемая версия каталога")
     categories = manifest["categories"]
-    require(len(categories) == 5, "ожидалось пять категорий")
+    require(isinstance(categories, list) and categories, "в манифесте нет категорий")
     names, category_ids, paths, geometries = set(), set(), set(), set()
     for category in categories:
         category_id = category["id"]
+        members = category["icons"]
         require(ID.fullmatch(category_id) and category_id not in category_ids
-                and category["label"].strip() and len(category["icons"]) == 10,
+                and category["label"].strip() and isinstance(members, list) and members,
                 f"неверная категория {category_id}")
         category_ids.add(category_id)
         records = []
-        for name in category["icons"]:
+        for name in members:
             require(ID.fullmatch(name) and name not in names, f"неверное или повторное имя {name}")
             names.add(name)
             file = ROOT / "icons" / category_id / f"{name}.svg"
@@ -166,7 +167,9 @@ def main():
     except (OSError, ValueError, KeyError, TypeError) as error:
         print(error, file=sys.stderr)
         return 1
-    print("50 SVG · 5 категорий · JSON и HTML синхронизированы")
+    category_count = len(catalog["categories"])
+    icon_count = sum(len(category["icons"]) for category in catalog["categories"])
+    print(f"{icon_count} SVG · категорий: {category_count} · JSON и HTML синхронизированы")
     return 0
 
 
