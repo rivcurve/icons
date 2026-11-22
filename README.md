@@ -31,3 +31,5 @@ python3 scripts/icons.py check
 Из корня проекта выполните `npm install`, затем `npm run dev`. Главная открывается на [localhost:3000](http://localhost:3000). `npm run build` экспортирует сайт в `apps/site/out/`.
 
 Примеры React и Vue показывают проектный API будущих пакетов.
+
+Интерфейс сайта использует [Arc UI](https://uiarc.dev/components) для кнопок и фильтров. Компоненты получают цвета и размеры из токенов Rivcurve, включая тёмную тему. Источники компонентов и лицензия находятся в [описании интеграции](apps/site/components/arc/README.md).

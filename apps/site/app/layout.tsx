@@ -3,7 +3,10 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import "@fontsource-variable/manrope";
 import { BrandMark } from "@/components/brand";
+import { themeBootScript } from "@/components/theme-settings";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import "./globals.css";
+import "@/components/arc/rivcurve.css";
 
 export const metadata: Metadata = {
   title: { default: "Rivcurve — Icons for real interfaces", template: "%s · Rivcurve" },
@@ -12,7 +15,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: themeBootScript }} /></head>
       <body>
         <a className="skip-link" href="#content">Skip to content</a>
         <header className="site-header">
@@ -21,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
             <nav aria-label="Main navigation">
               <Link href="/icons/">Icons</Link>
               <Link href="/docs/">Docs</Link>
+              <ThemeSwitcher />
             </nav>
           </div>
         </header>

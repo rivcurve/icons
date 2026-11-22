@@ -1,0 +1,18 @@
+{
+  "button": {
+    "url": "https://uiarc.dev/r/button.json",
+    "sha256": "71ff0c80c643821b9ef193011448ffefca475a5c034f7f2d5d659856da1038ec"
+  },
+  "search-field": {
+    "url": "https://uiarc.dev/r/search-field.json",
+    "sha256": "f6024b474eebae508f503ea5ebb6186b7efd4ed4edb4de87428e8712bb72dfda"
+  },
+  "segmented-control": {
+    "url": "https://uiarc.dev/r/segmented-control.json",
+    "sha256": "4ce2bbe7d294de277013aa8900a38345a61e103e29df7729d9f70cf36fd212d8"
+  },
+  "arc-motion-tokens": {
+    "url": "https://uiarc.dev/r/arc-motion-tokens.json",
+    "sha256": "17f6e7011d19d69f2b00518e873797be9bfb5747c9260b95ab49aafbda6aa72b"
+  }
+}

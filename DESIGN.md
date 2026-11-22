@@ -9,6 +9,22 @@ colors:
   accent: "#A8331B"
   orange: "#F26648"
   focus: "#95331F"
+  soft: "#EEEAE2"
+  hover: "#EEE8DD"
+  raised: "#F1EDE6"
+  selection: "#FFC2AE"
+  paper-dark: "#1C1A17"
+  surface-dark: "#26231F"
+  ink-dark: "#F7F1E8"
+  muted-dark: "#C1B8AA"
+  line-dark: "#51483F"
+  accent-dark: "#FFA38B"
+  orange-dark: "#D95B40"
+  focus-dark: "#FFB19A"
+  soft-dark: "#38322B"
+  hover-dark: "#40382F"
+  raised-dark: "#302A24"
+  selection-dark: "#634034"
 typography:
   display:
     fontFamily: Manrope Variable
@@ -50,7 +66,9 @@ The selected [homepage reference](docs/design/homepage-reference.png) sets the c
 
 ## Colors
 
-Paper is the page backdrop. Surface supports the compact file example. Ink is used for primary copy, controls and icons. Reserve orange for the first screen's illustration field. The darker accent is used for the mark and text links so it remains readable against paper.
+Paper is the page backdrop. Surface supports the compact file example. Ink is used for primary copy, controls and icons. Reserve orange for the first screen's illustration field, and use accent for inline links and the mark.
+
+The dark theme keeps the warm palette and uses brighter ink and accent colors. Soft is the selected surface, hover marks an interactive state, raised groups code and similar content, and focus identifies the keyboard position. Components use the semantic CSS variables in `apps/site/app/globals.css`; Arc maps its variables to the same palette. System follows the operating system. Explicit Light or Dark choices persist across page loads.
 
 ## Typography
 
@@ -62,7 +80,7 @@ Constrain content to 1200px with fluid side gutters. On desktop the first screen
 
 ## Components
 
-Primary links are dark filled buttons. The secondary action uses an outline. Use flat surfaces and thin rules between sections. Recurring icons come from the generated catalog and retain the 24×24 viewBox and 2-unit stroke.
+Primary links use a contrasting solid fill in each theme. The secondary action uses an outline. Use flat surfaces and thin rules between sections. Recurring icons come from the generated catalog and retain the 24×24 viewBox and 2-unit stroke.
 
 ## Do's and Don'ts
 

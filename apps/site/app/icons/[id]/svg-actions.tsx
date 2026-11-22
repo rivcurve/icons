@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { iconSvg, type IconRecord } from "@/lib/catalog";
+import { Button } from "@/components/arc/button/button";
 
 export function SvgActions({ icon }: { icon: IconRecord }) {
   const [size, setSize] = useState(24);
@@ -30,7 +31,7 @@ export function SvgActions({ icon }: { icon: IconRecord }) {
       </label>
       <textarea aria-label="SVG source" readOnly ref={source} value={svg} rows={7} spellCheck={false} />
       <div className="export-buttons">
-        <button className="button button-primary" type="button" onClick={copy}>Copy SVG</button>
+        <Button className="arc-action" type="button" onClick={copy}>{status === "SVG copied." ? "Copied" : "Copy SVG"}</Button>
         <a className="button button-secondary" href={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`} download={`${icon.name}.svg`}>Download SVG</a>
       </div>
       <p className="export-status" role="status">{status}</p>

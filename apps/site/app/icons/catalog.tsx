@@ -3,10 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@/components/icon";
+import { Button } from "@/components/arc/button/button";
+import { SearchField } from "@/components/arc/search-field/search-field";
+import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
 import { categories, icons } from "@/lib/catalog";
 
 const sizes = [16, 20, 24] as const;
 type Size = typeof sizes[number];
+const sizeOptions = sizes.map((size) => ({ value: String(size), label: `${size} px` }));
 
 const aliases: Record<string, string> = {
   home: "house start", "map-pin": "location marker", search: "find magnifying glass",
@@ -53,10 +57,14 @@ export function Catalog() {
   return (
     <section aria-label="Icon catalog">
       <div className="catalog-controls">
-        <label className="catalog-search">
-          <Icon name="search" size={18} />
-          <input type="search" placeholder="Search icons" aria-label="Search icons" value={query} onChange={(event) => change(event.target.value, category, size)} />
-        </label>
+        <div className="arc-search">
+          <SearchField
+            label="Search icons"
+            placeholder="Search by name or keyword"
+            value={query}
+            onValueChange={(value) => change(value, category, size)}
+          />
+        </div>
         <label className="catalog-select">
           <span>Category</span>
           <select value={category} onChange={(event) => change(query, event.target.value, size)}>
@@ -64,9 +72,16 @@ export function Catalog() {
             {categories.map(({ id, label }) => <option key={id} value={id}>{label}</option>)}
           </select>
         </label>
-        <div className="size-controls" aria-label="Icon size" role="group">
-          {sizes.map((value) => <button key={value} type="button" aria-label={`${value} pixels`} aria-pressed={value === size} onClick={() => change(query, category, value)}>{value}</button>)}
-        </div>
+        <SegmentedControl
+          className="arc-segments"
+          label="Icon size"
+          options={sizeOptions}
+          value={String(size)}
+          onValueChange={(value) => {
+            const selected = sizes.find((option) => String(option) === value);
+            if (selected !== undefined) change(query, category, selected);
+          }}
+        />
       </div>
       <p className="result-count" role="status">{results.length} {results.length === 1 ? "icon" : "icons"}</p>
       {results.length ? (
@@ -76,7 +91,7 @@ export function Catalog() {
           ))}
         </ul>
       ) : (
-        <div className="catalog-empty"><p>No icons match your filters.</p><button type="button" className="button button-secondary" onClick={() => change("", "all", size)}>Clear filters</button></div>
+        <div className="catalog-empty"><p>No icons match your filters.</p><Button type="button" variant="secondary" className="arc-action" onClick={() => change("", "all", size)}>Clear filters</Button></div>
       )}
     </section>
   );

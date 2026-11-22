@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
 
 const examples = {
   React: {
@@ -18,19 +19,24 @@ const examples = {
   },
 } as const;
 
+const formats = (["React", "Vue", "SVG"] as const).map((value) => ({ value, label: value }));
+
 export function PackageExample() {
   const [selected, choose] = useState<keyof typeof examples>("React");
   const { code, href } = examples[selected];
 
   return (
     <div className="package-example">
-      <div className="package-options" role="group" aria-label="Example format">
-        {(["React", "Vue", "SVG"] as const).map((name) => (
-          <button key={name} type="button" aria-pressed={name === selected} onClick={() => choose(name)}>
-            {name}
-          </button>
-        ))}
-      </div>
+      <SegmentedControl
+        className="arc-segments"
+        options={formats}
+        value={selected}
+        label="Example format"
+        onValueChange={(value) => {
+          const format = formats.find((option) => option.value === value);
+          if (format) choose(format.value);
+        }}
+      />
       <pre aria-label={`${selected} example`}><code>{code}</code></pre>
       <Link href={href} className="text-link">
         {selected === "SVG" ? "View the icon" : `Read the ${selected} guide`} <span aria-hidden="true">→</span>

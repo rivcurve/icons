@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-22T23:48:45+03:00",
+  "generatedAt": "2026-11-23T00:01:58+03:00",
   "title": "Design System: Rivcurve",
   "extensions": {
     "colorMeta": {
@@ -15,6 +15,18 @@
       "orange": {
         "role": "accent",
         "displayName": "Orange field"
+      },
+      "paper-dark": {
+        "role": "neutral",
+        "displayName": "Warm charcoal"
+      },
+      "ink-dark": {
+        "role": "primary",
+        "displayName": "Light ink"
+      },
+      "orange-dark": {
+        "role": "accent",
+        "displayName": "Orange field, dark"
       }
     },
     "typographyMeta": {
@@ -50,7 +62,8 @@
     "keyCharacteristics": [
       "Warm paper",
       "Orange first-screen field",
-      "Compact Refined specimens"
+      "Compact Refined specimens",
+      "Warm dark palette with the same semantic token roles"
     ],
     "rules": [
       {
