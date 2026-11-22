@@ -1,37 +1,149 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import "../catalog.css";
+import { Icon } from "@/components/icon";
+import { findIcon, icons, iconSvg } from "@/lib/catalog";
+import { issues, releases, repository } from "@/lib/project-links";
+import { CodeExample } from "./code-example";
+import styles from "./docs.module.css";
 
-export const metadata: Metadata = { title: "Get started" };
+export const metadata: Metadata = {
+  title: "Documentation",
+  description: "Get started with Rivcurve, use Refined SVGs, preview the React and Vue APIs, and learn how to contribute.",
+};
 
-const examples = [
-  { id: "react", label: "React", snippet: "import { FolderOpenIcon } from '@rivcurve/react';\n\nexport function Example() {\n  return <FolderOpenIcon size={20} />;\n}" },
-  { id: "vue", label: "Vue", snippet: "<script setup>\nimport { FolderOpenIcon } from '@rivcurve/vue';\n</script>\n\n<template>\n  <FolderOpenIcon :size=\"20\" />\n</template>" },
+
+const navigation = [
+  { label: "Start here", sections: [["overview", "Overview"], ["svg", "Use SVGs"]] },
+  { label: "Frameworks", sections: [["react", "React"], ["vue", "Vue"]] },
+  { label: "Project", sections: [["accessibility", "Accessibility"], ["contributing", "Contributing"], ["releases", "Release status"]] },
 ];
 
-export default function DocsPage() {
+const frameworkExamples = [
+  {
+    id: "react",
+    name: "React",
+    packageName: "@rivcurve/react",
+    filename: "FolderAction.tsx",
+    snippet: `import { FolderOpenIcon } from '@rivcurve/react';
+
+export function FolderAction() {
   return (
-    <article className="wrap subpage guide">
-      <header>
-        <h1>Get started</h1>
-        <p>Use Refined icons in an interface. Choose a package example or take an SVG from the catalog.</p>
-      </header>
-      <nav className="guide-nav" aria-label="On this page">
-        <a href="#react">React</a><a href="#vue">Vue</a><a href="#svg">SVG</a>
-      </nav>
-      <p className="status-note">React and Vue packages are in development. The examples show the planned API.</p>
-      {examples.map(({ id, label, snippet }) => (
-        <section key={id} id={id}>
-          <h2>{label}</h2>
-          <p>Import the icon by name and set its size in pixels. Stroke color follows the surrounding text.</p>
-          <pre><code>{snippet}</code></pre>
+    <button type="button">
+      <FolderOpenIcon size={20} aria-hidden="true" />
+      Open folder
+    </button>
+  );
+}`,
+  },
+  {
+    id: "vue",
+    name: "Vue",
+    packageName: "@rivcurve/vue",
+    filename: "FolderAction.vue",
+    snippet: `<script setup>
+import { FolderOpenIcon } from '@rivcurve/vue';
+</script>
+
+<template>
+  <button type="button">
+    <FolderOpenIcon :size="20" aria-hidden="true" />
+    Open folder
+  </button>
+</template>`,
+  },
+] as const;
+
+const localSvgExample = `<button type="button">
+  <img src="./folder-open.svg" width="20" height="20" alt="" />
+  Open folder
+</button>`;
+
+export default function DocsPage() {
+  const folderIcon = findIcon("folder-open");
+  const svgSource = folderIcon ? iconSvg(folderIcon, 20).trimEnd() : "";
+
+  return (
+    <div className={`wrap ${styles.layout}`}>
+      <aside className={styles.sidebar}>
+        <nav aria-label="Documentation sections" className={styles.nav}>
+          {navigation.map(({ label, sections }) => (
+            <div key={label} className={styles.navGroup}>
+              <p>{label}</p>
+              <ul>
+                {sections.map(([id, name]) => <li key={id}><a href={`#${id}`}>{name}</a></li>)}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </aside>
+      <article className={styles.content}>
+        <header id="overview" className={styles.intro}>
+          <h1>Get started</h1>
+          <p>Use Rivcurve’s Refined icons in product interfaces. The first collection includes {icons.length} outline icons built on a 24 × 24 grid.</p>
+          <div className={styles.actions}>
+            <a className={`button button-primary ${styles.action}`} href="#svg">
+              <Icon name="download" size={17} /> Start with SVG
+            </a>
+            <Link className={`button button-secondary ${styles.action}`} href="/icons/">
+              Browse the catalog <Icon name="arrow-right" size={17} />
+            </Link>
+          </div>
+        </header>
+
+        <section aria-labelledby="svg">
+          <h2 id="svg">Use SVGs</h2>
+          <p>SVGs are available directly from the catalog. Open an icon, choose an export size, then download the file or copy its markup.</p>
+          <ol className={styles.steps}>
+            <li>Open <Link href="/icons/folder-open/">Folder open</Link> and select <b>20 px</b>.</li>
+            <li>Choose <b>Download SVG</b> and save <code>folder-open.svg</code> next to your HTML file.</li>
+            <li>Add the markup below. Open the HTML file in your browser to see the result.</li>
+          </ol>
+          <div className={styles.preview} aria-label="Example button preview">
+            <span><Icon name="folder-open" size={20} /> Open folder</span>
+            <p>20 px icon · 24 × 24 viewBox</p>
+          </div>
+          <CodeExample label="index.html" source={localSvgExample} />
+          <h3>Match the surrounding text color</h3>
+          <p>Paste the SVG directly into your markup and set <code>color</code> on its container. Refined strokes use <code>currentColor</code>. An SVG loaded through <code>&lt;img&gt;</code> cannot inherit the page’s text color.</p>
+          {svgSource && <CodeExample label="folder-open.svg" source={svgSource} />}
         </section>
-      ))}
-      <section id="svg">
-        <h2>SVG</h2>
-        <p>Open an icon in the <Link href="/icons/">catalog</Link> and choose Copy SVG or Download SVG.</p>
-        <p>Hide a decorative icon from assistive technology. Give the control a name when the icon is the only thing inside a button.</p>
-      </section>
-    </article>
+
+        {frameworkExamples.map(({ id, name, packageName, filename, snippet }) => (
+          <section key={id} aria-labelledby={id}>
+            <div className={styles.sectionHeading}>
+              <h2 id={id}>{name}</h2>
+              <span>Planned API</span>
+            </div>
+            <p>The <code>{packageName}</code> package is in development and has not been published. The example shows the intended component API. Use the <a href="#svg">SVG workflow</a> in your app today.</p>
+            <CodeExample label={filename} source={snippet} />
+          </section>
+        ))}
+
+        <section aria-labelledby="accessibility">
+          <h2 id="accessibility">Accessibility</h2>
+          <dl className={styles.definitions}>
+            <div><dt>Decorative icons</dt><dd>When text already describes the action, use <code>alt=""</code> on an image or <code>aria-hidden="true"</code> on inline SVG.</dd></div>
+            <div><dt>Icon-only buttons</dt><dd>Put the accessible name on the button itself, for example <code>aria-label="Open folder"</code>. Keep the icon inside decorative.</dd></div>
+            <div><dt>Meaningful standalone icons</dt><dd>Use descriptive <code>alt</code> text for an image. For inline SVG, add <code>role="img"</code> and an accessible name.</dd></div>
+          </dl>
+        </section>
+
+        <section aria-labelledby="contributing">
+          <h2 id="contributing">Contributing</h2>
+          <p>For an icon request, describe the interface action or state it represents, link a similar Refined icon if one exists, and include a screenshot or sketch. When editing a shape, compare it alongside its neighbors at 16, 20, and 24 px.</p>
+          <p>Read the <a href={`${repository}/blob/main/DESIGN_GUIDELINES.md`}>icon design guidelines</a> or <a href={issues}>view issues on GitHub</a>. These links require repository access during the private preview.</p>
+        </section>
+
+        <section aria-labelledby="releases">
+          <h2 id="releases">Release status</h2>
+          <dl className={styles.definitions}>
+            <div><dt>Available now</dt><dd>The Refined SVG catalog with search, previews, and exports.</dd></div>
+            <div><dt>In development</dt><dd>React and Vue packages generated from the same SVG sources.</dd></div>
+            <div><dt>Planned for later</dt><dd>Flutter support following the web release.</dd></div>
+          </dl>
+          <p>Follow progress in the <a href={repository}>Rivcurve repository</a> and check <a href={releases}>GitHub Releases</a> once the first packages ship.</p>
+        </section>
+      </article>
+    </div>
   );
 }
