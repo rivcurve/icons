@@ -1,47 +1,24 @@
 import Link from "next/link";
 import { Icon } from "@/components/icon";
 import { PackageExample } from "@/components/package-example";
-import { icons } from "@/lib/catalog";
+import { ProductPreview } from "@/components/product-preview";
+import { categories, icons } from "@/lib/catalog";
+import { issues, repository } from "@/lib/project-links";
+import "./homepage.css";
 
-const specimen = ["home", "search", "upload", "download", "folder", "folder-open", "file-text",
-  "image", "database", "layout-grid", "banknote", "bell", "git-branch", "chart-pie"];
+const samples: Record<string, string[]> = {
+  navigation: ["compass", "map-pin", "layout-grid"],
+  people: ["users", "user-check", "contact-card"],
+  finance: ["wallet", "banknote", "chart-pie"],
+  "files-data": ["folder-open", "download", "database"],
+  development: ["terminal", "git-branch", "package"],
+};
 
-function FilesDemo() {
-  const sections = [
-    ["folder", "All files"], ["image", "Images"], ["database", "Data"], ["archive", "Archive"],
-  ];
-  const files = [
-    ["folder-open", "Design", "Folder"], ["folder", "Product", "Folder"],
-    ["image", "cover.png", "Image"], ["database", "data.db", "Database"],
-  ];
-
-  return (
-    <figure className="demo-stage" aria-label="Refined icons in a sample files interface">
-      <svg className="stage-lines" viewBox="0 0 360 180" aria-hidden="true" fill="none">
-        <path d="M-12 162h72c52 0 73-20 86-68 14-47 43-65 95-65h133M102 175h56c53 0 74-20 87-68 13-47 42-65 94-65h38" stroke="currentColor" strokeWidth="2.5" />
-      </svg>
-      <div className="files-demo" aria-hidden="true">
-        <div className="demo-header">
-          <strong><Icon name="folder" size={21} /> Files</strong>
-          <span><Icon name="upload" size={16} /> Upload</span>
-        </div>
-        <div className="demo-body">
-          <ul className="demo-sidebar">
-            {sections.map(([icon, label]) => <li key={label}><Icon name={icon} size={16} />{label}</li>)}
-          </ul>
-          <table>
-            <thead><tr><th scope="col">Name</th><th scope="col">Kind</th></tr></thead>
-            <tbody>
-              {files.map(([icon, label, kind]) => (
-                <tr key={label}><td><span><Icon name={icon} size={17} />{label}</span></td><td>{kind}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </figure>
-  );
-}
+const principles = [
+  { icon: "layout-grid", title: "Clear at small sizes", text: "Compare each icon at 16, 20 and 24 px in the catalog." },
+  { icon: "git-branch", title: "One drawing per icon", text: "The same SVG source drives the catalog and future framework packages." },
+  { icon: "file-text", title: "Built to be shared", text: "Inspect the source and see the rules behind Refined on GitHub." },
+];
 
 export default function Home() {
   return (
@@ -50,35 +27,53 @@ export default function Home() {
         <div className="wrap hero">
           <div className="hero-copy">
             <h1>Icons for real<br className="hero-break" /> interfaces.</h1>
-            <p>{icons.length} rounded outline icons, designed to read clearly at small sizes.</p>
+            <p>Rivcurve is an open-source icon library in development. Explore {icons.length} rounded outline icons in the Refined collection.</p>
             <div className="hero-actions">
               <Link className="button button-primary" href="/docs/">Get started</Link>
               <Link className="button button-secondary" href="/icons/">Browse icons</Link>
             </div>
           </div>
-          <FilesDemo />
+          <ProductPreview />
         </div>
       </section>
-      <section className="wrap">
-        <div className="intro-section">
-          <div>
-            <h2>Use Rivcurve</h2>
-            <p>Explore the planned React and Vue components, or grab an SVG for your project.</p>
-          </div>
-          <PackageExample />
+      <section className="wrap intro-section" aria-labelledby="use-rivcurve">
+        <div>
+          <h2 id="use-rivcurve">Use Rivcurve</h2>
+          <p>Grab an SVG today or explore the planned React and Vue components.</p>
         </div>
-        <div className="specimen-section">
-          <div className="specimen-heading">
-            <h2>Refined</h2>
-            <p>{icons.length} outline icons <span>·</span> 24 × 24 grid <span>·</span> 2-unit stroke</p>
-          </div>
-          <ul className="specimen">
-            {specimen.map((name) => (
-              <li key={name}>
-                <Link href={`/icons/${name}/`} aria-label={name} title={name}><Icon name={name} /></Link>
-              </li>
-            ))}
-          </ul>
+        <PackageExample />
+      </section>
+      <section className="wrap collection-section" aria-labelledby="collection-title">
+        <header className="section-heading">
+          <div><h2 id="collection-title">Meet Refined</h2><p>{icons.length} icons across {categories.length} categories.</p></div>
+          <Link className="text-link" href="/icons/">Browse all icons <Icon name="arrow-right" size={16} /></Link>
+        </header>
+        <ul className="collection-list">
+          {categories.map(({ id, label }) => (
+            <li key={id}>
+              <Link href={`/icons/?category=${id}`}>
+                <div className="collection-glyphs">{samples[id]?.map((name) => <Icon key={name} name={name} />)}</div>
+                <div className="collection-label">
+                  <span>{label}</span><Icon name="arrow-right" size={15} />
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="wrap principles-section" aria-labelledby="principles-title">
+        <h2 id="principles-title">Built for everyday UI</h2>
+        <ul>
+          {principles.map(({ icon, title, text }) => (
+            <li key={title}><Icon name={icon} /><h3>{title}</h3><p>{text}</p></li>
+          ))}
+        </ul>
+      </section>
+      <section className="wrap project-section" aria-labelledby="project-title">
+        <div><h2 id="project-title">Follow the project on GitHub</h2><p>Rivcurve is in development. GitHub will host the source, release notes and icon requests.</p></div>
+        <div className="project-actions">
+          <a className="button button-primary" href={repository}>View repository <Icon name="external-link" size={16} /></a>
+          <a className="text-link" href={issues}>Project issues <Icon name="arrow-right" size={16} /></a>
         </div>
       </section>
     </>

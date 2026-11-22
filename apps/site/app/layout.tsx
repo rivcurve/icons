@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import type { ReactNode } from "react";
 import "@fontsource-variable/manrope";
-import { BrandMark } from "@/components/brand";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { themeBootScript } from "@/components/theme-settings";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import "./globals.css";
+import "./site-chrome.css";
 import "@/components/arc/rivcurve.css";
 
 export const metadata: Metadata = {
@@ -19,24 +19,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       <head><script dangerouslySetInnerHTML={{ __html: themeBootScript }} /></head>
       <body>
         <a className="skip-link" href="#content">Skip to content</a>
-        <header className="site-header">
-          <div className="wrap site-header-inner">
-            <Link href="/" className="wordmark"><BrandMark /> Rivcurve</Link>
-            <nav aria-label="Main navigation">
-              <Link href="/icons/">Icons</Link>
-              <Link href="/docs/">Docs</Link>
-              <ThemeSwitcher />
-            </nav>
-          </div>
-        </header>
+        <SiteHeader />
         <main id="content">{children}</main>
-        <footer className="site-footer">
-          <div className="wrap site-footer-inner">
-            <Link href="/" className="footer-brand">Rivcurve</Link>
-            <span>Refined outline icons</span>
-            <nav aria-label="Footer navigation"><Link href="/icons/">Icons</Link><Link href="/docs/">Docs</Link></nav>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );

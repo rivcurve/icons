@@ -1,7 +1,8 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useId, useSyncExternalStore } from "react";
 import { normalizeTheme, themeStorageKey, type Theme } from "@/components/theme-settings";
+import styles from "./theme-switcher.module.css";
 
 const changeEvent = "rivcurve-theme-change";
 
@@ -50,19 +51,63 @@ function changeTheme(theme: Theme) {
   window.dispatchEvent(new Event(changeEvent));
 }
 
+const choices = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "system", label: "System" },
+] as const satisfies readonly { value: Theme; label: string }[];
+
+function ThemeIcon({ theme }: { theme: Theme }) {
+  return (
+    <svg
+      className={styles.icon}
+      viewBox="0 0 24 24"
+      width={17}
+      height={17}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      {theme === "light" && <>
+        <circle cx="12" cy="12" r="3.8" />
+        <path d="M12 2.5v2.4m0 14.2v2.4M2.5 12h2.4m14.2 0h2.4M5.3 5.3 7 7m10 10 1.7 1.7m0-13.4L17 7M7 17l-1.7 1.7" />
+      </>}
+      {theme === "dark" && <path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.35 8.35 0 1 0 20.2 15.1Z" />}
+      {theme === "system" && <>
+        <rect x="3" y="4.5" width="18" height="12.2" rx="2.1" />
+        <path d="M12 16.7v3m-3.4 0h6.8" />
+      </>}
+    </svg>
+  );
+}
+
 export function ThemeSwitcher() {
   const theme = useSyncExternalStore(subscribe, getTheme, getServerTheme);
+  const groupName = useId();
+
   return (
-    <select
-      className="theme-switcher"
-      aria-label="Color theme"
-      title="Color theme"
-      value={theme}
-      onChange={(event) => changeTheme(normalizeTheme(event.target.value))}
-    >
-      <option value="system">System</option>
-      <option value="light">Light</option>
-      <option value="dark">Dark</option>
-    </select>
+    <fieldset className={styles.switcher} aria-label="Color theme">
+      {choices.map(({ value, label }) => (
+        <label className={styles.option} key={value} data-value={value}>
+          <input
+            className={styles.radio}
+            type="radio"
+            name={groupName}
+            value={value}
+            checked={theme === value}
+            aria-label={label}
+            onChange={(event) => {
+              if (event.currentTarget.checked) changeTheme(value);
+            }}
+          />
+          <span className={styles.face}><ThemeIcon theme={value} /></span>
+          <span className={styles.tooltip} aria-hidden="true">{label}</span>
+        </label>
+      ))}
+    </fieldset>
   );
 }

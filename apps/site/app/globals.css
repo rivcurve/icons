@@ -43,33 +43,9 @@ svg { flex: none; vertical-align: middle; }
 .skip-link { position: absolute; z-index: 3; inset: .5rem auto auto .5rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-150%); }
 .skip-link:focus { transform: none; }
 
-.site-header-inner, .site-footer-inner {
-  display: flex;
-  min-height: 78px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-.site-header nav, .site-footer nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.4rem); }
-.site-header nav a, .site-footer a { text-decoration: none; font-weight: 680; }
-.site-header nav a:hover, .site-footer a:hover { text-decoration: underline; text-underline-offset: .28em; }
-.theme-switcher {
-  min-height: var(--control-small);
-  padding: .25rem .4rem;
-  border: 1px solid var(--line);
-  border-radius: var(--control-radius);
-  background: var(--surface);
-  color: var(--ink);
-  font-size: .84rem;
-  font-weight: 700;
-}
-
 .wordmark { display: inline-flex; align-items: center; gap: .5rem; font-weight: 850; font-size: 1.7rem; line-height: 1; letter-spacing: -.04em; text-decoration: none; }
 .wordmark svg { color: var(--accent); }
 .site-footer { margin-top: 3.5rem; border-top: 1px solid var(--line); }
-.site-footer-inner { font-size: .84rem; color: var(--muted); }
-.footer-brand { color: var(--ink); font-size: 1rem; }
-
 .hero-shell { overflow: clip; }
 .hero {
   display: grid;
@@ -106,19 +82,11 @@ svg { flex: none; vertical-align: middle; }
 .demo-body tr:last-child td { border-bottom: 0; }
 
 .intro-section { border-block: 1px solid var(--line); padding-block: 1.9rem 2.2rem; display: grid; grid-template-columns: minmax(0, .65fr) minmax(0,1.35fr); gap: 2.5rem; }
-.intro-section h2, .specimen-heading h2 { font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1.1; font-weight: 820; letter-spacing: -.035em; }
+.intro-section h2 { font-size: clamp(1.8rem, 3vw, 2.45rem); line-height: 1.1; font-weight: 820; letter-spacing: -.035em; }
 .intro-section p { max-width: 32ch; color: var(--muted); line-height: 1.6; margin-top: .7rem; }
 .package-example pre { margin-block: .65rem; padding: .9rem 1rem; overflow-x: auto; background: var(--raised); border-radius: 7px; font-size: .85rem; line-height: 1.7; }
 .package-example code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
 .text-link { color: var(--accent); font-size: .86rem; font-weight: 760; text-underline-offset: .25em; }
-.specimen-section { padding-block: 1.8rem 0; }
-.specimen-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: .45rem 1.2rem; }
-.specimen-heading p { font-size: .9rem; color: var(--muted); font-weight: 650; }
-.specimen-heading span { padding-inline: .15rem; }
-.specimen { margin: 1.25rem 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit,minmax(47px,1fr)); gap: .35rem; }
-.specimen a { display: grid; place-items: center; min-height: 48px; border-radius: 6px; }
-.specimen a:hover { background: var(--control-hover); color: var(--accent); }
-
 @media (max-width: 900px) {
   .wrap { width: calc(100% - 3rem); }
   .hero { gap: 2.1rem; }
@@ -129,10 +97,8 @@ svg { flex: none; vertical-align: middle; }
 
 @media (max-width: 680px) {
   .wrap { width: calc(100% - 2rem); }
-  .site-header-inner { min-height: 64px; gap: .8rem; }
   .wordmark { font-size: 1.38rem; }
   .wordmark svg { width: 30px; }
-  .site-header nav { gap: .7rem; font-size: .9rem; }
   .hero { display: block; padding-block: .8rem 1.75rem; }
   .hero-copy { padding-block: 1.2rem 1.65rem; }
   .hero-break { display: none; }
@@ -146,14 +112,10 @@ svg { flex: none; vertical-align: middle; }
   .demo-sidebar { padding: .35rem; }
   .demo-sidebar li { padding-inline: .3rem; }
   .intro-section { grid-template-columns: 1fr; gap: 1rem; padding-block: 1.6rem; }
-  .site-footer-inner { flex-wrap: wrap; justify-content: flex-start; gap: .45rem 1.1rem; padding-block: 1rem; }
-  .site-footer-inner nav { margin-left: auto; }
 }
 
 @media (max-width: 365px) {
   .wordmark { font-size: 1.15rem; }
   .wordmark svg { width: 25px; }
-  .site-header-inner { gap: .5rem; }
-  .site-header nav { gap: .5rem; }
   .demo-body th:nth-child(2), .demo-body td:nth-child(2) { display: none; }
 }

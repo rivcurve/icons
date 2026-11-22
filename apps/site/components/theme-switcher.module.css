@@ -1,0 +1,132 @@
+.switcher {
+  --theme-cell: 2.125rem;
+  --theme-inset: 3px;
+  --theme-index: 2;
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  grid-template-columns: repeat(3, var(--theme-cell));
+  flex: none;
+  min-inline-size: 0;
+  margin: 0;
+  padding: var(--theme-inset);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--soft);
+}
+
+/* The document's saved theme is applied before hydration. The plate can
+   therefore use the same state as the palette from its first paint. */
+:global(html[data-theme="light"]) .switcher { --theme-index: 0; }
+:global(html[data-theme="dark"]) .switcher { --theme-index: 1; }
+
+.switcher::before {
+  position: absolute;
+  z-index: -1;
+  inset: var(--theme-inset) auto var(--theme-inset) var(--theme-inset);
+  inline-size: var(--theme-cell);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 12%, transparent);
+  transform: translateX(calc(var(--theme-index) * var(--theme-cell)));
+  transition: transform 250ms cubic-bezier(.22, 1, .36, 1);
+  pointer-events: none;
+  content: "";
+}
+
+.option {
+  position: relative;
+  display: grid;
+  min-block-size: 2rem;
+  place-items: center;
+  cursor: pointer;
+}
+
+.radio {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.face {
+  display: grid;
+  inline-size: calc(100% - 4px);
+  block-size: calc(100% - 4px);
+  place-items: center;
+  border-radius: 999px;
+  color: var(--muted);
+  transition: color 160ms ease;
+  pointer-events: none;
+}
+
+.option:focus-within .radio:focus-visible + .face {
+  outline: 2px solid var(--focus);
+  outline-offset: -1px;
+}
+
+.icon {
+  transition: transform 240ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.option:hover .face { color: var(--ink); }
+
+:global(html[data-theme="light"]) .option[data-value="light"] .face,
+:global(html[data-theme="dark"]) .option[data-value="dark"] .face,
+:global(html:not([data-theme])) .option[data-value="system"] .face {
+  color: var(--accent);
+}
+
+:global(html[data-theme="light"]) .option[data-value="light"] .icon {
+  transform: rotate(24deg);
+}
+
+:global(html[data-theme="dark"]) .option[data-value="dark"] .icon {
+  transform: rotate(-12deg) translateY(-1px);
+}
+
+:global(html:not([data-theme])) .option[data-value="system"] .icon {
+  transform: translateY(-1px);
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 2;
+  inset: calc(100% + .55rem) auto auto 50%;
+  padding: .22rem .52rem;
+  border-radius: var(--control-radius);
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: .72rem;
+  font-weight: 720;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -2px);
+  transition: opacity 120ms ease, transform 150ms ease;
+}
+
+.radio:focus-visible ~ .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .option:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@media (max-width: 450px) {
+  .switcher { --theme-cell: 1.875rem; }
+  .option { min-block-size: 1.875rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switcher::before, .face, .icon, .tooltip { transition: none; }
+}
