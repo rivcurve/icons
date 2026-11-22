@@ -7,10 +7,10 @@ import { Icon } from "@/components/icon";
 import { QuickFind } from "@/components/quick-find";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { repository } from "@/lib/project-links";
+import { catalogAnchor } from "@/lib/catalog-links";
 
 const pages = [
-  { href: "/", label: "Overview" },
-  { href: "/icons/", label: "Icons" },
+  { href: catalogAnchor, label: "Icons" },
   { href: "/docs/", label: "Docs" },
 ];
 
@@ -23,7 +23,7 @@ export function SiteHeader() {
         <Link href="/" className="wordmark"><BrandMark /> Rivcurve</Link>
         <nav className="main-nav" aria-label="Main navigation">
           {pages.map(({ href, label }) => {
-            const active = href === "/" ? pathname === href : `${pathname.replace(/\/$/, "")}/`.startsWith(href);
+            const active = href === catalogAnchor ? pathname === "/" || pathname.startsWith("/icons/") : pathname.startsWith("/docs");
             return <Link key={href} href={href} aria-current={active ? "page" : undefined}>{label}</Link>;
           })}
         </nav>

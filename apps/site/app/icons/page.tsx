@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { icons } from "@/lib/catalog";
-import { Catalog } from "./catalog";
-import "../catalog.css";
+import Link from "next/link";
+import { catalogAnchor } from "@/lib/catalog-links";
+import { CatalogRedirect } from "./redirect";
 
-export const metadata: Metadata = { title: "Icons" };
+export const metadata: Metadata = { title: "Icon catalog", robots: { index: false } };
 
-export default function IconsPage() {
+export default function OldCatalogPage() {
   return (
-    <div className="wrap subpage">
-      <header><h1>Refined icons</h1><p>{icons.length} rounded outline icons for product interfaces.</p></header>
-      <Catalog />
-    </div>
+    <section className="wrap subpage">
+      <CatalogRedirect />
+      <h1>Icon catalog</h1>
+      <p>The catalog is now on the homepage. <Link href={catalogAnchor}>Open the catalog</Link>.</p>
+    </section>
   );
 }

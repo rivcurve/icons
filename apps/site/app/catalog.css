@@ -3,8 +3,6 @@
 .subpage h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.06; letter-spacing: -.04em; font-weight: 850; overflow-wrap: anywhere; }
 .subpage header p { margin-top: .7rem; color: var(--muted); line-height: 1.6; }
 .catalog-controls { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; }
-.catalog-select { display: grid; gap: .26rem; font-size: .86rem; font-weight: 700; }
-.catalog-select select { min-height: var(--control-height); padding: 0 .8rem; color: var(--ink); border: 1px solid var(--line); border-radius: var(--control-radius); background: var(--surface); }
 .result-count { margin-block: .9rem; color: var(--muted); font-size: .86rem; }
 .catalog-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill,minmax(101px,1fr)); border-top: 1px solid var(--line); }
 .catalog-grid a { display: grid; place-items: center; align-content: center; gap: .55rem; min-height: 91px; height: 100%; padding: .55rem; text-align: center; text-decoration: none; border-bottom: 1px solid var(--line); }
@@ -18,7 +16,6 @@
 .detail-specimen ul { display: flex; gap: 1.3rem; list-style: none; padding: 0; margin: 0; }
 .detail-specimen li { display: grid; justify-items: center; align-items: end; grid-template-rows: 24px 1rem; gap: .45rem; font-size: .76rem; color: var(--muted); }
 .svg-actions { display: grid; gap: .8rem; align-content: start; }
-.svg-actions > label { justify-self: start; }
 .svg-actions textarea, .guide pre { min-width: 0; width: 100%; padding: .85rem; border: 1px solid var(--line); border-radius: 7px; background: var(--raised); color: var(--ink); font: .86rem/1.6 ui-monospace, monospace; }
 .svg-actions textarea { resize: vertical; }
 .export-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }

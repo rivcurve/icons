@@ -42,3 +42,19 @@
 @media (max-width: 630px) {
   .arc-search { flex-basis: 100%; }
 }
+
+/* The Select menu and trigger follow the same Rivcurve surfaces in both themes. */
+:root {
+  --surface-raised: var(--raised);
+  --shadow-floating: 0 .65rem 1.5rem rgb(0 0 0 / 16%);
+  --text-xs: .75rem;
+  --duration-standard: 220ms;
+  --duration-spring: 240ms;
+  --ease-enter: var(--ease-standard);
+  --ease-spring: var(--ease-standard);
+}
+
+.svg-actions > .arc-export-select {
+  justify-self: start;
+  min-inline-size: 7rem;
+}

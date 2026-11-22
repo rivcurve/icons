@@ -1,18 +1,25 @@
+.home-intro { display: flex; align-items: end; justify-content: space-between; gap: 1rem 1.5rem; padding-block: clamp(1.45rem, 4vw, 3.1rem) 1.6rem; }
+.home-intro h1 { font-size: clamp(2.25rem, 5vw, 4.35rem); line-height: 1.03; letter-spacing: -.04em; font-weight: 850; }
+.home-intro p { color: var(--muted); line-height: 1.55; margin-top: .65rem; max-width: 54ch; }
+.home-intro .button { gap: .45rem; flex: none; }
+.home-catalog { padding-block: 1.2rem 1.8rem; border-top: 1px solid var(--line); }
+.home-catalog .section-heading { margin-bottom: .95rem; }
+.home-catalog .section-heading h2 { font-size: clamp(1.45rem, 2.7vw, 2.05rem); }
+.home-catalog .section-heading p { margin-top: .25rem; font-size: .86rem; }
+.home-catalog .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(91px, 1fr)); }
+.home-catalog .catalog-grid a { min-height: 76px; gap: .35rem; }
+.demo-section { padding-block: .6rem 2.4rem; }
+.demo-section .hero-copy h2 { font-size: clamp(2rem, 4vw, 3.65rem); line-height: 1.04; letter-spacing: -.04em; font-weight: 850; }
+.demo-jump { display: inline-flex; gap: .3rem; align-items: center; margin-top: .85rem; }
 .hero-demo { display: grid; justify-items: end; gap: .9rem; width: 100%; }
 .demo-switch { justify-self: end; background: var(--paper); border-color: var(--paper); }
 .demo-switch button { color: var(--ink); }
 .demo-switch button[aria-pressed="true"] { font-weight: 770; }
-.collection-section, .principles-section { padding-block: 2.25rem 2.5rem; border-bottom: 1px solid var(--line); }
+.principles-section { padding-block: 2.25rem 2.5rem; border-bottom: 1px solid var(--line); }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
 .section-heading h2, .principles-section h2, .project-section h2 { font-size: clamp(1.8rem,3vw,2.45rem); line-height: 1.1; font-weight: 820; letter-spacing: -.035em; }
 .section-heading p, .project-section p { color: var(--muted); margin-top: .55rem; line-height: 1.6; }
 .section-heading .text-link, .project-actions .text-link { display: inline-flex; align-items: center; gap: .3rem; }
-.collection-list { display: grid; grid-template-columns: repeat(5,minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; border-block: 1px solid var(--line); }
-.collection-list li + li { border-left: 1px solid var(--line); }
-.collection-list a { display: grid; gap: 1rem; min-height: 124px; align-content: space-between; padding: 1rem; text-decoration: none; }
-.collection-list a:hover { background: var(--control-hover); color: var(--accent); }
-.collection-glyphs { display: flex; flex-wrap: wrap; gap: .55rem; }
-.collection-label { display: flex; align-items: center; justify-content: space-between; gap: .35rem; font-size: .9rem; font-weight: 780; }
 .principles-section ul { list-style: none; display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem 2.1rem; margin: 1.3rem 0 0; padding: 0; }
 .principles-section h3 { margin: .55rem 0 .28rem; font-size: 1rem; font-weight: 820; }
 .principles-section li > svg { color: var(--accent); }
@@ -23,20 +30,15 @@
 .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1rem; }
 .project-actions .button { gap: .4rem; }
 
-@media (max-width: 900px) {
-  .collection-list { grid-template-columns: repeat(3, minmax(0,1fr)); border-bottom: 0; }
-  .collection-list li { border-bottom: 1px solid var(--line); }
-  .collection-list li:nth-child(3n + 1) { border-left: 0; }
-}
 @media (max-width: 680px) {
+  .home-intro { flex-wrap: wrap; padding-bottom: 1.2rem; }
+  .home-catalog .catalog-grid { grid-template-columns: repeat(auto-fill,minmax(78px,1fr)); }
   .hero-demo { justify-items: center; }
   .demo-switch { justify-self: center; }
   .principles-section ul { gap: 1rem; }
 }
 @media (max-width: 540px) {
-  .collection-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .collection-list li:nth-child(3n + 1) { border-left: 1px solid var(--line); }
-  .collection-list li:nth-child(2n + 1) { border-left: 0; }
-  .collection-list a { min-height: 107px; gap: .7rem; padding: .75rem; }
   .principles-section ul { grid-template-columns: 1fr; }
 }
+
+.demo-jump .arrow-up { transform: rotate(180deg); }

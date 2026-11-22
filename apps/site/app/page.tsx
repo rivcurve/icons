@@ -1,18 +1,12 @@
 import Link from "next/link";
+import { Catalog } from "@/components/catalog";
 import { Icon } from "@/components/icon";
 import { PackageExample } from "@/components/package-example";
 import { ProductPreview } from "@/components/product-preview";
-import { categories, icons } from "@/lib/catalog";
+import { catalogAnchor } from "@/lib/catalog-links";
 import { issues, repository } from "@/lib/project-links";
+import "./catalog.css";
 import "./homepage.css";
-
-const samples: Record<string, string[]> = {
-  navigation: ["compass", "map-pin", "layout-grid"],
-  people: ["users", "user-check", "contact-card"],
-  finance: ["wallet", "banknote", "chart-pie"],
-  "files-data": ["folder-open", "download", "database"],
-  development: ["terminal", "git-branch", "package"],
-};
 
 const principles = [
   { icon: "layout-grid", title: "Clear at small sizes", text: "Compare each icon at 16, 20 and 24 px in the catalog." },
@@ -23,19 +17,32 @@ const principles = [
 export default function Home() {
   return (
     <>
-      <section className="hero-shell">
-        <div className="wrap hero">
+      <section className="wrap home-intro">
+        <div>
+          <h1>Icons for real interfaces.</h1>
+          <p>Refined is an open-source collection of rounded outline icons in development.</p>
+        </div>
+        <Link className="button button-primary" href="/docs/">Get started <Icon name="arrow-right" size={17} /></Link>
+      </section>
+
+      <section id="catalog" className="wrap home-catalog" aria-labelledby="catalog-title">
+        <header className="section-heading">
+          <div><h2 id="catalog-title">Refined icons</h2><p>24 × 24 grid · 2-unit stroke</p></div>
+        </header>
+        <Catalog />
+      </section>
+
+      <section className="hero-shell" aria-labelledby="example-title">
+        <div className="wrap hero demo-section">
           <div className="hero-copy">
-            <h1>Icons for real<br className="hero-break" /> interfaces.</h1>
-            <p>Rivcurve is an open-source icon library in development. Explore {icons.length} rounded outline icons in the Refined collection.</p>
-            <div className="hero-actions">
-              <Link className="button button-primary" href="/docs/">Get started</Link>
-              <Link className="button button-secondary" href="/icons/">Browse icons</Link>
-            </div>
+            <h2 id="example-title">See Refined in use.</h2>
+            <p>Compare the same icons in a file manager, a finance dashboard and developer tools.</p>
+            <Link className="text-link demo-jump" href={catalogAnchor}>Back to icons <Icon name="chevron-down" className="arrow-up" size={16} /></Link>
           </div>
           <ProductPreview />
         </div>
       </section>
+
       <section className="wrap intro-section" aria-labelledby="use-rivcurve">
         <div>
           <h2 id="use-rivcurve">Use Rivcurve</h2>
@@ -43,24 +50,7 @@ export default function Home() {
         </div>
         <PackageExample />
       </section>
-      <section className="wrap collection-section" aria-labelledby="collection-title">
-        <header className="section-heading">
-          <div><h2 id="collection-title">Meet Refined</h2><p>{icons.length} icons across {categories.length} categories.</p></div>
-          <Link className="text-link" href="/icons/">Browse all icons <Icon name="arrow-right" size={16} /></Link>
-        </header>
-        <ul className="collection-list">
-          {categories.map(({ id, label }) => (
-            <li key={id}>
-              <Link href={`/icons/?category=${id}`}>
-                <div className="collection-glyphs">{samples[id]?.map((name) => <Icon key={name} name={name} />)}</div>
-                <div className="collection-label">
-                  <span>{label}</span><Icon name="arrow-right" size={15} />
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+
       <section className="wrap principles-section" aria-labelledby="principles-title">
         <h2 id="principles-title">Built for everyday UI</h2>
         <ul>

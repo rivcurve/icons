@@ -4,13 +4,14 @@ import "@fontsource-variable/manrope";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { themeBootScript } from "@/components/theme-settings";
+import { icons } from "@/lib/catalog";
 import "./globals.css";
 import "./site-chrome.css";
 import "@/components/arc/rivcurve.css";
 
 export const metadata: Metadata = {
   title: { default: "Rivcurve — Icons for real interfaces", template: "%s · Rivcurve" },
-  description: "Refined is a collection of 50 rounded outline icons for product interfaces.",
+  description: `Refined is a collection of ${icons.length} rounded outline icons for product interfaces.`,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

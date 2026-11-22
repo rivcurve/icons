@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { catalogAnchor } from "@/lib/catalog-links";
 import { Icon } from "@/components/icon";
 import { findIcon, icons, iconSvg } from "@/lib/catalog";
 import { issues, releases, repository } from "@/lib/project-links";
@@ -84,7 +85,7 @@ export default function DocsPage() {
             <a className={`button button-primary ${styles.action}`} href="#svg">
               <Icon name="download" size={17} /> Start with SVG
             </a>
-            <Link className={`button button-secondary ${styles.action}`} href="/icons/">
+            <Link className={`button button-secondary ${styles.action}`} href={catalogAnchor}>
               Browse the catalog <Icon name="arrow-right" size={17} />
             </Link>
           </div>

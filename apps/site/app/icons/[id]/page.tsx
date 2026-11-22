@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { catalogAnchor } from "@/lib/catalog-links";
 import { notFound } from "next/navigation";
 import { Icon } from "@/components/icon";
 import { categories, findIcon, icons } from "@/lib/catalog";
@@ -26,7 +27,7 @@ export default async function IconDetails({ params }: Properties) {
 
   return (
     <article className="wrap subpage details">
-      <Link href="/icons/" className="text-link">← All icons</Link>
+      <Link href={catalogAnchor} className="text-link">← All icons</Link>
       <header><h1>{icon.name}</h1><p>Refined · {category?.label ?? icon.category}</p></header>
       <div className="detail-grid">
         <div className="detail-specimen">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { catalogAnchor } from "@/lib/catalog-links";
 import { BrandMark } from "@/components/brand";
 import { issues, releases, repository } from "@/lib/project-links";
 
@@ -12,7 +13,7 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Library">
           <h2>Library</h2>
-          <Link href="/icons/">Icon catalog</Link>
+          <Link href={catalogAnchor}>Icon catalog</Link>
           <Link href="/docs/">Get started</Link>
         </nav>
         <nav aria-label="Project">

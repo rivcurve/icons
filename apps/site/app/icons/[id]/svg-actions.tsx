@@ -3,6 +3,9 @@
 import { useRef, useState } from "react";
 import { iconSvg, type IconRecord } from "@/lib/catalog";
 import { Button } from "@/components/arc/button/button";
+import { Select } from "@/components/arc/select/select";
+
+const exportSizes = [16, 20, 24].map((value) => ({ value: String(value), label: `${value} px` }));
 
 export function SvgActions({ icon }: { icon: IconRecord }) {
   const [size, setSize] = useState(24);
@@ -23,12 +26,14 @@ export function SvgActions({ icon }: { icon: IconRecord }) {
 
   return (
     <section className="svg-actions" aria-label="Export SVG">
-      <label className="catalog-select">
-        <span>Export size</span>
-        <select value={size} onChange={(event) => { setSize(Number(event.target.value)); setStatus(""); }}>
-          {[16, 20, 24].map((value) => <option key={value} value={value}>{value} px</option>)}
-        </select>
-      </label>
+      <div className="arc-export-select">
+        <Select
+          label="Export size"
+          value={String(size)}
+          options={exportSizes}
+          onValueChange={(value) => { setSize(Number(value)); setStatus(""); }}
+        />
+      </div>
       <textarea aria-label="SVG source" readOnly ref={source} value={svg} rows={7} spellCheck={false} />
       <div className="export-buttons">
         <Button className="arc-action" type="button" onClick={copy}>{status === "SVG copied." ? "Copied" : "Copy SVG"}</Button>

@@ -69,9 +69,7 @@
   outline-offset: -1px;
 }
 
-.icon {
-  transition: transform 240ms cubic-bezier(.22, 1, .36, 1);
-}
+.icon { display: block; }
 
 .option:hover .face { color: var(--ink); }
 
@@ -81,16 +79,15 @@
   color: var(--accent);
 }
 
-:global(html[data-theme="light"]) .option[data-value="light"] .icon {
-  transform: rotate(24deg);
-}
-
-:global(html[data-theme="dark"]) .option[data-value="dark"] .icon {
-  transform: rotate(-12deg) translateY(-1px);
-}
-
+:global(html[data-theme="light"]) .option[data-value="light"] .icon,
+:global(html[data-theme="dark"]) .option[data-value="dark"] .icon,
 :global(html:not([data-theme])) .option[data-value="system"] .icon {
-  transform: translateY(-1px);
+  animation: settle-icon 240ms cubic-bezier(.22, 1, .36, 1);
+}
+
+@keyframes settle-icon {
+  from { transform: scale(.84) rotate(-8deg); }
+  to { transform: scale(1) rotate(0); }
 }
 
 .tooltip {
@@ -128,5 +125,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .switcher::before, .face, .icon, .tooltip { transition: none; }
+  .switcher::before, .face, .tooltip { transition: none; }
+  .switcher .option .icon { animation: none; }
 }

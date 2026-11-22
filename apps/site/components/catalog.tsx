@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import { Icon } from "@/components/icon";
 import { Button } from "@/components/arc/button/button";
 import { SearchField } from "@/components/arc/search-field/search-field";
+import { Select } from "@/components/arc/select/select";
 import SegmentedControl from "@/components/arc/segmented-control/segmented-control";
 import { categories, icons } from "@/lib/catalog";
+import { catalogHref } from "@/lib/catalog-links";
 
 const sizes = [16, 20, 24] as const;
 type Size = typeof sizes[number];
 const sizeOptions = sizes.map((size) => ({ value: String(size), label: `${size} px` }));
+const categoryOptions = [{ value: "all", label: "All categories" }, ...categories.map(({ id, label }) => ({ value: id, label }))];
 
 const aliases: Record<string, string> = {
   home: "house start", "map-pin": "location marker", search: "find magnifying glass",
@@ -26,12 +29,17 @@ export function Catalog() {
   const [size, setSize] = useState<Size>(24);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setQuery(params.get("q") ?? "");
-    const selectedCategory = params.get("category") ?? "all";
-    if (categories.some(({ id }) => id === selectedCategory)) setCategory(selectedCategory);
-    const selectedSize = sizes.find((value) => String(value) === params.get("size"));
-    if (selectedSize) setSize(selectedSize);
+    function readLocation() {
+      const params = new URLSearchParams(window.location.search);
+      const selectedCategory = params.get("category");
+      setQuery(params.get("q") ?? "");
+      setCategory(categories.find(({ id }) => id === selectedCategory)?.id ?? "all");
+      setSize(sizes.find((value) => String(value) === params.get("size")) ?? 24);
+    }
+
+    readLocation();
+    window.addEventListener("popstate", readLocation);
+    return () => window.removeEventListener("popstate", readLocation);
   }, []);
 
   function change(nextQuery: string, nextCategory: string, nextSize: Size) {
@@ -42,7 +50,7 @@ export function Catalog() {
     if (nextQuery) params.set("q", nextQuery);
     if (nextCategory !== "all") params.set("category", nextCategory);
     if (nextSize !== 24) params.set("size", String(nextSize));
-    window.history.replaceState(null, "", `/icons/${params.size ? `?${params}` : ""}`);
+    window.history.replaceState(null, "", catalogHref(params));
   }
 
   const search = query.trim().toLowerCase();
@@ -65,13 +73,12 @@ export function Catalog() {
             onValueChange={(value) => change(value, category, size)}
           />
         </div>
-        <label className="catalog-select">
-          <span>Category</span>
-          <select value={category} onChange={(event) => change(query, event.target.value, size)}>
-            <option value="all">All</option>
-            {categories.map(({ id, label }) => <option key={id} value={id}>{label}</option>)}
-          </select>
-        </label>
+        <Select
+          label="Category"
+          value={category}
+          options={categoryOptions}
+          onValueChange={(value) => change(query, value, size)}
+        />
         <SegmentedControl
           className="arc-segments"
           label="Icon size"

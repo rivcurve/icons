@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { Icon } from "@/components/icon";
 import { icons } from "@/lib/catalog";
+import { catalogHref } from "@/lib/catalog-links";
 
 const starterIcons = ["search", "folder-open", "user-check", "download", "git-branch", "chart-pie"];
 
@@ -85,7 +86,7 @@ export function QuickFind() {
             </li>
           ))}
         </ul>}
-        <Link className="quick-all text-link" href={search ? `/icons/?q=${encodeURIComponent(query.trim())}` : "/icons/"} onClick={close}>Open icon catalog <span aria-hidden="true">→</span></Link>
+        <a className="quick-all text-link" href={catalogHref(new URLSearchParams(search ? { q: query.trim() } : {}))} onClick={close}>Open icon catalog <span aria-hidden="true">→</span></a>
       </dialog>
     </>
   );
