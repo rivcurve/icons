@@ -18,5 +18,13 @@
   "select": {
     "url": "https://uiarc.dev/r/select.json",
     "sha256": "7bcfa2f43efbb0a27e708dd819472f7ca5430c343e01843d5389a64f2645b5b1"
+  },
+  "code-block": {
+    "url": "https://uiarc.dev/r/code-block.json",
+    "sha256": "fb68696e20d400124319757a1ede5efb421c416748863de4f16f858ee8bdee27"
+  },
+  "copy-button": {
+    "url": "https://uiarc.dev/r/copy-button.json",
+    "sha256": "c1f75088a9a37cfcbf6eb5faa4d7bc7406363ba7a964ee1606ad20b21ad9eba8"
   }
 }

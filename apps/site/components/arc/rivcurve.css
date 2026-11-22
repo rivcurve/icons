@@ -58,3 +58,11 @@
   justify-self: start;
   min-inline-size: 7rem;
 }
+
+/* Documentation code blocks reuse the page's warm surfaces and text colors. */
+:root {
+  --border-subtle: var(--line);
+  --font-body: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --radius-panel: 12px;
+  --success: var(--ink);
+}

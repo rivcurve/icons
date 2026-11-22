@@ -5,6 +5,7 @@ import { Icon } from "@/components/icon";
 import { findIcon, icons, iconSvg } from "@/lib/catalog";
 import { issues, releases, repository } from "@/lib/project-links";
 import { CodeExample } from "./code-example";
+import { DocsNavigation } from "./navigation";
 import styles from "./docs.module.css";
 
 export const metadata: Metadata = {
@@ -12,12 +13,6 @@ export const metadata: Metadata = {
   description: "Get started with Rivcurve, use Refined SVGs, preview the React and Vue APIs, and learn how to contribute.",
 };
 
-
-const navigation = [
-  { label: "Start here", sections: [["overview", "Overview"], ["svg", "Use SVGs"]] },
-  { label: "Frameworks", sections: [["react", "React"], ["vue", "Vue"]] },
-  { label: "Project", sections: [["accessibility", "Accessibility"], ["contributing", "Contributing"], ["releases", "Release status"]] },
-];
 
 const frameworkExamples = [
   {
@@ -65,18 +60,7 @@ export default function DocsPage() {
 
   return (
     <div className={`wrap ${styles.layout}`}>
-      <aside className={styles.sidebar}>
-        <nav aria-label="Documentation sections" className={styles.nav}>
-          {navigation.map(({ label, sections }) => (
-            <div key={label} className={styles.navGroup}>
-              <p>{label}</p>
-              <ul>
-                {sections.map(([id, name]) => <li key={id}><a href={`#${id}`}>{name}</a></li>)}
-              </ul>
-            </div>
-          ))}
-        </nav>
-      </aside>
+      <DocsNavigation />
       <article className={styles.content}>
         <header id="overview" className={styles.intro}>
           <h1>Get started</h1>
@@ -94,7 +78,7 @@ export default function DocsPage() {
         <section aria-labelledby="svg">
           <h2 id="svg">Use SVGs</h2>
           <p>SVGs are available directly from the catalog. Open an icon, choose an export size, then download the file or copy its markup.</p>
-          <ol className={styles.steps}>
+          <ol id="download-steps" className={styles.steps}>
             <li>Open <Link href="/icons/folder-open/">Folder open</Link> and select <b>20 px</b>.</li>
             <li>Choose <b>Download SVG</b> and save <code>folder-open.svg</code> next to your HTML file.</li>
             <li>Add the markup below. Open the HTML file in your browser to see the result.</li>
@@ -104,9 +88,19 @@ export default function DocsPage() {
             <p>20 px icon · 24 × 24 viewBox</p>
           </div>
           <CodeExample label="index.html" source={localSvgExample} />
-          <h3>Match the surrounding text color</h3>
-          <p>Paste the SVG directly into your markup and set <code>color</code> on its container. Refined strokes use <code>currentColor</code>. An SVG loaded through <code>&lt;img&gt;</code> cannot inherit the page’s text color.</p>
+        </section>
+
+        <section aria-labelledby="styling">
+          <h2 id="styling">Size and color</h2>
+          <p>The 24 × 24 viewBox is the drawing grid. Change width and height together to display an icon at 16, 20, or 24 px without distorting it.</p>
+          <div className={styles.sizeSample} aria-label="Folder icon at 16, 20 and 24 pixels">
+            {[16, 20, 24].map((size) => <div key={size}><Icon name="folder-open" size={size} /><code>{size} px</code></div>)}
+          </div>
+          <h3 id="current-color">Match the surrounding text color</h3>
+          <p>Paste the SVG in your markup and set <code>color</code> on its container. Refined strokes use <code>currentColor</code>. An SVG loaded through <code>&lt;img&gt;</code> cannot inherit the page’s text color.</p>
           {svgSource && <CodeExample label="folder-open.svg" source={svgSource} />}
+          <h3 id="stroke">Adjust stroke weight carefully</h3>
+          <p>The original stroke width is 2 units. Keep it consistent across related icons, and check a change at 16 px before using it throughout a toolbar.</p>
         </section>
 
         {frameworkExamples.map(({ id, name, packageName, filename, snippet }) => (
@@ -124,7 +118,7 @@ export default function DocsPage() {
           <h2 id="accessibility">Accessibility</h2>
           <dl className={styles.definitions}>
             <div><dt>Decorative icons</dt><dd>When text already describes the action, use <code>alt=""</code> on an image or <code>aria-hidden="true"</code> on inline SVG.</dd></div>
-            <div><dt>Icon-only buttons</dt><dd>Put the accessible name on the button itself, for example <code>aria-label="Open folder"</code>. Keep the icon inside decorative.</dd></div>
+            <div id="icon-buttons"><dt>Icon-only buttons</dt><dd>Put the accessible name on the button itself, for example <code>aria-label="Open folder"</code>. Keep the icon inside decorative.</dd></div>
             <div><dt>Meaningful standalone icons</dt><dd>Use descriptive <code>alt</code> text for an image. For inline SVG, add <code>role="img"</code> and an accessible name.</dd></div>
           </dl>
         </section>
@@ -145,6 +139,18 @@ export default function DocsPage() {
           <p>Follow progress in the <a href={repository}>Rivcurve repository</a> and check <a href={releases}>GitHub Releases</a> once the first packages ship.</p>
         </section>
       </article>
+      <aside className={styles.outline}>
+        <nav aria-label="Quick links within this guide">
+          <p>On this page</p>
+          <a href="#download-steps">Download an SVG</a>
+          <a href="#current-color">Inherit text color</a>
+          <a href="#stroke">Scale stroke weight</a>
+          <a href="#icon-buttons">Name icon buttons</a>
+        </nav>
+        <a className={styles.sourceLink} href={`${repository}/tree/main/icons`}>
+          <Icon name="external-link" size={15} /> SVG source
+        </a>
+      </aside>
     </div>
   );
 }
