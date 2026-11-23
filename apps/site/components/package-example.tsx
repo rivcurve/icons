@@ -10,7 +10,7 @@ const examples = {
     href: "/docs/#react",
   },
   Vue: {
-    code: "<script setup>\nimport { FolderOpenIcon } from '@rivcurve/vue';\n</script>\n\n<template><FolderOpenIcon :size=\"20\" /></template>",
+    code: "<script setup>\nimport { FolderOpenIcon } from '@rivcurve/vue';\n</script>\n\n<template><FolderOpenIcon :size=\"20\" /></template>\n\n<!-- Planned: @rivcurve/vue is not published yet -->",
     href: "/docs/#vue",
   },
   SVG: {

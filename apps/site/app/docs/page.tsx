@@ -10,7 +10,7 @@ import styles from "./docs.module.css";
 
 export const metadata: Metadata = {
   title: "Documentation",
-  description: "Get started with Rivcurve, use Refined SVGs, preview the React and Vue APIs, and learn how to contribute.",
+  description: "Get started with Rivcurve: install the SVG and React packages, use Refined icons accessibly, and learn how to contribute.",
 };
 
 
@@ -19,13 +19,15 @@ const frameworkExamples = [
     id: "react",
     name: "React",
     packageName: "@rivcurve/react",
+    status: "Alpha",
+    published: true,
     filename: "FolderAction.tsx",
     snippet: `import { FolderOpenIcon } from '@rivcurve/react';
 
 export function FolderAction() {
   return (
     <button type="button">
-      <FolderOpenIcon size={20} aria-hidden="true" />
+      <FolderOpenIcon size={20} />
       Open folder
     </button>
   );
@@ -35,6 +37,8 @@ export function FolderAction() {
     id: "vue",
     name: "Vue",
     packageName: "@rivcurve/vue",
+    status: "Planned API",
+    published: false,
     filename: "FolderAction.vue",
     snippet: `<script setup>
 import { FolderOpenIcon } from '@rivcurve/vue';
@@ -77,7 +81,7 @@ export default function DocsPage() {
 
         <section aria-labelledby="svg">
           <h2 id="svg">Use SVGs</h2>
-          <p>SVGs are available directly from the catalog. Open an icon, choose an export size, then download the file or copy its markup.</p>
+          <p>SVGs are available directly from the catalog. Open an icon, choose an export size, then download the file or copy its markup. To keep every icon in your project, install <code>@rivcurve/icons</code>: files live at <code>svg/refined/&lt;name&gt;.svg</code>.</p>
           <ol id="download-steps" className={styles.steps}>
             <li>Open <Link href="/icons/folder-open/">Folder open</Link> and select <b>20 px</b>.</li>
             <li>Choose <b>Download SVG</b> and save <code>folder-open.svg</code> next to your HTML file.</li>
@@ -103,13 +107,21 @@ export default function DocsPage() {
           <p>The original stroke width is 2 units. Keep it consistent across related icons, and check a change at 16 px before using it throughout a toolbar.</p>
         </section>
 
-        {frameworkExamples.map(({ id, name, packageName, filename, snippet }) => (
+        {frameworkExamples.map(({ id, name, packageName, status, published, filename, snippet }) => (
           <section key={id} aria-labelledby={id}>
             <div className={styles.sectionHeading}>
               <h2 id={id}>{name}</h2>
-              <span>Planned API</span>
+              <span>{status}</span>
             </div>
-            <p>The <code>{packageName}</code> package is in development and has not been published. The example shows the intended component API. Use the <a href="#svg">SVG workflow</a> in your app today.</p>
+            {published ? (
+              <>
+                <p>Install <code>{packageName}</code>. Each icon is its own module, so your bundle keeps only the icons you import. Components accept <code>size</code>, <code>color</code>, <code>strokeWidth</code> and <code>title</code>, and pass other SVG props and <code>ref</code> to the <code>&lt;svg&gt;</code>. Icon names may still change before 1.0.</p>
+                <CodeExample label="Terminal" source={`npm install ${packageName}`} />
+                <p>Icons are decorative by default and render with <code>aria-hidden="true"</code>. Give an icon a <code>title</code> when it carries meaning on its own.</p>
+              </>
+            ) : (
+              <p>The <code>{packageName}</code> package is in development and has not been published. The example shows the intended component API. Use the <a href="#svg">SVG workflow</a> or the <a href="#react">React package</a> today.</p>
+            )}
             <CodeExample label={filename} source={snippet} />
           </section>
         ))}
@@ -132,11 +144,11 @@ export default function DocsPage() {
         <section aria-labelledby="releases">
           <h2 id="releases">Release status</h2>
           <dl className={styles.definitions}>
-            <div><dt>Available now</dt><dd>The Refined SVG catalog with search, previews, and exports.</dd></div>
-            <div><dt>In development</dt><dd>React and Vue packages generated from the same SVG sources.</dd></div>
+            <div><dt>Available now</dt><dd>The Refined catalog with search and exports, plus the <code>@rivcurve/icons</code> SVG and <code>@rivcurve/react</code> packages in alpha.</dd></div>
+            <div><dt>In development</dt><dd>The Filled style for every icon, new icon series, and the Vue package.</dd></div>
             <div><dt>Planned for later</dt><dd>Flutter support following the web release.</dd></div>
           </dl>
-          <p>Follow progress in the <a href={repository}>Rivcurve repository</a> and check <a href={releases}>GitHub Releases</a> once the first packages ship.</p>
+          <p>Follow progress in the <a href={repository}>Rivcurve repository</a> and check <a href={releases}>GitHub Releases</a> for changes in each version.</p>
         </section>
       </article>
       <aside className={styles.outline}>

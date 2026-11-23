@@ -1,0 +1,41 @@
+name: Publish
+
+# Push a tag such as v0.2.0 to publish @rivcurve/icons and @rivcurve/react.
+# Both packages share one version. npm authenticates this workflow through
+# trusted publishing (OIDC), so no npm token is stored in the repository.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - name: Use an npm that supports trusted publishing
+        run: npm install -g npm@^11.5.1
+      - run: npm ci
+      - name: Check that the tag matches both package versions
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          for pkg in icons react; do
+            version=$(node -p "require('./packages/$pkg/package.json').version")
+            test "$version" = "$tag" || { echo "packages/$pkg is $version, tag is $GITHUB_REF_NAME"; exit 1; }
+          done
+      - name: Validate icons, generate packages, test them
+        run: npm test
+      - run: npm publish ./packages/icons
+      - run: npm publish ./packages/react
