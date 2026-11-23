@@ -12,18 +12,19 @@ Rivcurve currently ships 108 icons in the **Refined** style: a 24 × 24 grid, a 
 - `icons.json` is the manifest: categories, order, icon names and search keywords. Names are the public identifiers.
 - `generated/icons.json` is the normalized build output that the site and future package generators read. Edit the sources and rebuild it; never edit it by hand.
 - `preview.html` is a self-contained catalog for checking icons at 16, 20 and 24 px on light and dark backgrounds. Open `preview.html?qa` for a geometry report.
+- `packages/icons` (`@rivcurve/icons`) and `packages/react` (`@rivcurve/react`) are generated from `generated/icons.json` by `scripts/packages.mjs`. Their build output is not committed.
 - `apps/site` is the Next.js website with the searchable catalog and the docs.
 
-## Build and check the icons
+## Build and check
 
-Requires Python 3.9 or newer.
+Requires Python 3.9+ and Node.js 20+.
 
 ```sh
-python3 scripts/icons.py build
-python3 scripts/icons.py check
+npm run icons   # validate SVGs and rebuild generated/icons.json and preview.html
+npm test        # check generated data, build both packages and verify them
 ```
 
-`check` validates every SVG and the manifest, and verifies that both generated files are up to date.
+`npm test` confirms that every React component renders the same geometry as its SVG file, that icons are decorative by default, and that props reach the `<svg>` element. CI runs the same checks and builds the site.
 
 ## Run the site
 

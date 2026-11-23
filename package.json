@@ -4,6 +4,9 @@
   "workspaces": ["apps/*"],
   "scripts": {
     "dev": "npm run dev --workspace @rivcurve/site",
-    "build": "npm run build --workspace @rivcurve/site"
+    "build": "npm run build --workspace @rivcurve/site",
+    "icons": "python3 scripts/icons.py build",
+    "packages": "node scripts/packages.mjs",
+    "test": "python3 scripts/icons.py check && node scripts/packages.mjs && node scripts/test-packages.mjs"
   }
 }

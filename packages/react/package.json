@@ -1,0 +1,23 @@
+{
+  "name": "@rivcurve/react",
+  "version": "0.1.0",
+  "description": "Rivcurve interface icons as React components. Clear at small sizes.",
+  "license": "MIT",
+  "homepage": "https://github.com/rivcurve/icons#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/rivcurve/icons.git", "directory": "packages/react" },
+  "bugs": "https://github.com/rivcurve/icons/issues",
+  "keywords": ["icons", "react", "svg", "ui", "interface", "rivcurve", "refined"],
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./icons/*": { "types": "./dist/icons/*.d.ts", "default": "./dist/icons/*.js" },
+    "./package.json": "./package.json"
+  },
+  "peerDependencies": { "react": ">=18" },
+  "publishConfig": { "access": "public" }
+}

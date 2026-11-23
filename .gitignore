@@ -8,3 +8,8 @@ out/
 !.env.example
 next-env.d.ts
 *.tsbuildinfo
+packages/*/dist/
+packages/*/svg/
+packages/*/metadata.json
+packages/*/LICENSE
+*.tgz

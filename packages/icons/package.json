@@ -1,0 +1,17 @@
+{
+  "name": "@rivcurve/icons",
+  "version": "0.1.0",
+  "description": "Rivcurve interface icons as plain SVG files. Clear at small sizes.",
+  "license": "MIT",
+  "homepage": "https://github.com/rivcurve/icons#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/rivcurve/icons.git", "directory": "packages/icons" },
+  "bugs": "https://github.com/rivcurve/icons/issues",
+  "keywords": ["icons", "svg", "ui", "interface", "rivcurve", "refined"],
+  "files": ["svg", "metadata.json"],
+  "exports": {
+    "./svg/*": "./svg/*",
+    "./metadata.json": "./metadata.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": { "access": "public" }
+}
