@@ -1,6 +1,6 @@
 # Contributing to Rivcurve
 
-Start with an icon request or bug report in [GitHub Issues](https://github.com/vend1k12/rivcurve/issues). Name the UI action you want to represent and include a small example of where the icon would appear. For an existing icon, include its catalog name and the size at which it is hard to recognize.
+Start with an icon request or bug report in [GitHub Issues](https://github.com/rivcurve/icons/issues). Name the UI action you want to represent and include a small example of where the icon would appear. For an existing icon, include its catalog name and the size at which it is hard to recognize.
 
 ## Work on the icons
 
