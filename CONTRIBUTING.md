@@ -4,8 +4,11 @@ Start with an icon request or bug report in [GitHub Issues](https://github.com/v
 
 ## Work on the icons
 
+Most new icons are drawn by the maintainer to keep one hand across the set. SVG pull requests are welcome too, and they get a strict review against the design rules.
+
+
 - Read [the Refined design rules](DESIGN_GUIDELINES.md).
-- Edit the canonical SVG in `icons/<category>/`. Keep the public name stable for a correction. Add a manifest entry when proposing a new name.
+- Edit the canonical SVG in `icons/refined/<category>/`. Keep the public name stable for a correction. Add a manifest entry with English search keywords when proposing a new name.
 - Run `python3 scripts/icons.py build` to regenerate catalog data and `python3 scripts/icons.py check` to verify the files.
 - Compare the before and after at 16, 20 and 24 px, on both light and dark backgrounds. Link those views in the pull request.
 

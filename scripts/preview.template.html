@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Каталог иконок · Refined</title>
+<title>Icon catalog · Refined</title>
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; color: #272522; background: #f7f6f2; font: 15px system-ui, sans-serif; }
@@ -30,10 +30,10 @@
 <body>
 <main>
   <header>
-    <div><h1>Каталог иконок</h1><p>Refined · светлый и тёмный фон · размеры в px</p></div>
-    <label>Имя иконки <input type="search" id="filter" placeholder="Например, wallet"></label>
+    <div><h1>Icon catalog</h1><p>Refined · light and dark backgrounds · sizes in px</p></div>
+    <label>Icon name <input type="search" id="filter" placeholder="For example, wallet"></label>
   </header>
-  <p id="empty" hidden role="status">Иконки не найдены.</p>
+  <p id="empty" hidden role="status">No icons found.</p>
   <!-- CATALOG -->
   <p id="geometry" hidden></p>
 </main>
@@ -60,16 +60,16 @@
         svg.getBoundingClientRect().width !== [16, 20, 24][i % 3] ||
         svg.getBoundingClientRect().height !== [16, 20, 24][i % 3] ||
         getComputedStyle(svg).color !== (i < 3 ? 'rgb(35, 43, 42)' : 'rgb(244, 243, 238)'))) {
-        problems.push(card.dataset.name + ' (размер или цвет)');
+        problems.push(card.dataset.name + ' (size or color)');
       }
       const {x, y, width, height} = samples[0].getBBox();
       // A single horizontal or vertical centerline has one zero dimension. Its stroke is visible.
       if (![x, y, width, height].every(Number.isFinite) || (width === 0 && height === 0) || Math.min(x, y) < 1.99 ||
-        Math.max(x + width, y + height) > 22.01) problems.push(card.dataset.name + ' (границы)');
+        Math.max(x + width, y + height) > 22.01) problems.push(card.dataset.name + ' (bounds)');
     }
     result.hidden = false;
     result.dataset.status = problems.length ? 'failed' : 'passed';
-    result.textContent = problems.length ? problems.join(', ') : cards.length + ' SVG · размеры, цвет и границы в норме';
+    result.textContent = problems.length ? problems.join(', ') : cards.length + ' SVG · size, color and bounds OK';
   }
 </script>
 </body>

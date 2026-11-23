@@ -1,16 +1,136 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "styles": ["refined"],
   "categories": [
-    {"id": "navigation", "label": "Навигация", "icons": ["home", "compass", "map-pin", "arrow-left", "arrow-right", "chevron-down", "menu", "search", "external-link", "layout-grid", "sun", "moon", "x", "check", "arrow-up", "arrow-down", "chevron-left", "chevron-right", "chevron-up"]},
-    {"id": "actions", "label": "Действия", "icons": ["plus", "minus", "more-horizontal", "more-vertical", "settings", "filter", "edit", "copy", "trash", "refresh"]},
-    {"id": "people", "label": "Пользователи", "icons": ["user", "users", "user-plus", "user-check", "user-minus", "contact-card", "circle-user", "badge-check", "message-circle", "bell"]},
-    {"id": "communication", "label": "Связь", "icons": ["mail", "chat-dots", "phone", "send", "inbox", "bell-off", "link", "share", "at-sign"]},
-    {"id": "finance", "label": "Финансы", "icons": ["wallet", "credit-card", "banknote", "coins", "bank", "receipt", "chart-line", "chart-bar", "chart-pie", "currency-exchange"]},
-    {"id": "files-data", "label": "Файлы и данные", "icons": ["file", "file-text", "folder", "folder-open", "download", "upload", "database", "table", "image", "archive"]},
-    {"id": "development", "label": "Разработка", "icons": ["code", "terminal", "git-branch", "git-commit", "git-pull-request", "bug", "brackets", "command", "server", "package", "monitor"]},
-    {"id": "security", "label": "Безопасность", "icons": ["lock", "lock-open", "shield", "shield-check", "key", "eye", "eye-off"]},
-    {"id": "media", "label": "Медиа", "icons": ["play", "pause", "stop", "volume", "volume-off", "camera", "video", "microphone"]},
-    {"id": "utility", "label": "Утилиты", "icons": ["calendar", "clock", "globe", "bookmark", "heart", "star"]},
-    {"id": "status", "label": "Статусы", "icons": ["info", "circle-help", "triangle-alert", "circle-check", "circle-x", "circle-minus", "loader", "octagon-alert"]}
+    {"id": "navigation", "label": "Navigation", "icons": [
+      {"name": "home", "keywords": ["house", "start"]},
+      {"name": "compass", "keywords": ["direction", "explore", "navigation"]},
+      {"name": "map-pin", "keywords": ["location", "marker"]},
+      {"name": "arrow-left", "keywords": ["back", "previous"]},
+      {"name": "arrow-right", "keywords": ["next", "forward"]},
+      {"name": "chevron-down", "keywords": ["expand", "dropdown", "open"]},
+      {"name": "menu", "keywords": ["hamburger", "navigation", "lines"]},
+      {"name": "search", "keywords": ["find", "magnifying", "glass"]},
+      {"name": "external-link", "keywords": ["open", "new", "tab", "outside"]},
+      {"name": "layout-grid", "keywords": ["tiles", "gallery", "view"]},
+      {"name": "sun", "keywords": ["light", "theme", "day", "bright"]},
+      {"name": "moon", "keywords": ["dark", "theme", "night"]},
+      {"name": "x", "keywords": ["close", "cancel", "clear", "dismiss"]},
+      {"name": "check", "keywords": ["done", "confirm", "tick", "selected"]},
+      {"name": "arrow-up", "keywords": ["top", "ascending"]},
+      {"name": "arrow-down", "keywords": ["bottom", "descending"]},
+      {"name": "chevron-left", "keywords": ["back", "previous", "collapse"]},
+      {"name": "chevron-right", "keywords": ["next", "forward"]},
+      {"name": "chevron-up", "keywords": ["collapse", "close"]}
+    ]},
+    {"id": "actions", "label": "Actions", "icons": [
+      {"name": "plus", "keywords": ["add", "create", "new"]},
+      {"name": "minus", "keywords": ["remove", "subtract"]},
+      {"name": "more-horizontal", "keywords": ["overflow", "ellipsis", "actions"]},
+      {"name": "more-vertical", "keywords": ["overflow", "ellipsis", "actions"]},
+      {"name": "settings", "keywords": ["preferences", "gear", "configure"]},
+      {"name": "filter", "keywords": ["funnel", "refine", "sort"]},
+      {"name": "edit", "keywords": ["pencil", "modify"]},
+      {"name": "copy", "keywords": ["duplicate", "clipboard"]},
+      {"name": "trash", "keywords": ["delete", "remove", "bin"]},
+      {"name": "refresh", "keywords": ["reload", "retry"]}
+    ]},
+    {"id": "people", "label": "People", "icons": [
+      {"name": "user", "keywords": ["person", "account", "profile"]},
+      {"name": "users", "keywords": ["group", "people"]},
+      {"name": "user-plus", "keywords": ["add", "person", "invite"]},
+      {"name": "user-check", "keywords": ["verified", "approved", "person"]},
+      {"name": "user-minus", "keywords": ["remove", "person"]},
+      {"name": "contact-card", "keywords": ["id", "badge", "vcard"]},
+      {"name": "circle-user", "keywords": ["avatar", "profile", "account"]},
+      {"name": "badge-check", "keywords": ["verified", "certified", "approved"]},
+      {"name": "message-circle", "keywords": ["comment", "chat", "bubble"]},
+      {"name": "bell", "keywords": ["notification", "alert", "reminder"]}
+    ]},
+    {"id": "communication", "label": "Communication", "icons": [
+      {"name": "mail", "keywords": ["email", "envelope"]},
+      {"name": "chat-dots", "keywords": ["message", "conversation"]},
+      {"name": "phone", "keywords": ["call", "telephone"]},
+      {"name": "send", "keywords": ["submit", "paper", "plane", "message"]},
+      {"name": "inbox", "keywords": ["tray", "messages", "mail"]},
+      {"name": "bell-off", "keywords": ["mute", "notification"]},
+      {"name": "link", "keywords": ["chain", "url", "hyperlink"]},
+      {"name": "share", "keywords": ["send", "export"]},
+      {"name": "at-sign", "keywords": ["mention", "email"]}
+    ]},
+    {"id": "finance", "label": "Finance", "icons": [
+      {"name": "wallet", "keywords": ["money", "payment"]},
+      {"name": "credit-card", "keywords": ["payment", "debit", "card"]},
+      {"name": "banknote", "keywords": ["cash", "bill", "money"]},
+      {"name": "coins", "keywords": ["money", "change", "cash"]},
+      {"name": "bank", "keywords": ["finance", "institution", "building"]},
+      {"name": "receipt", "keywords": ["invoice", "bill", "purchase"]},
+      {"name": "chart-line", "keywords": ["graph", "trend", "analytics"]},
+      {"name": "chart-bar", "keywords": ["graph", "statistics", "analytics"]},
+      {"name": "chart-pie", "keywords": ["graph", "proportion", "analytics"]},
+      {"name": "currency-exchange", "keywords": ["convert", "money", "swap"]}
+    ]},
+    {"id": "files-data", "label": "Files & data", "icons": [
+      {"name": "file", "keywords": ["document", "page"]},
+      {"name": "file-text", "keywords": ["document", "text"]},
+      {"name": "folder", "keywords": ["directory"]},
+      {"name": "folder-open", "keywords": ["directory", "browse"]},
+      {"name": "download", "keywords": ["save", "export"]},
+      {"name": "upload", "keywords": ["send", "import"]},
+      {"name": "database", "keywords": ["storage", "data", "sql"]},
+      {"name": "table", "keywords": ["grid", "spreadsheet", "rows"]},
+      {"name": "image", "keywords": ["photo", "picture"]},
+      {"name": "archive", "keywords": ["box", "storage"]}
+    ]},
+    {"id": "development", "label": "Development", "icons": [
+      {"name": "code", "keywords": ["source", "html", "markup"]},
+      {"name": "terminal", "keywords": ["console", "shell", "command", "line"]},
+      {"name": "git-branch", "keywords": ["version", "control", "branch"]},
+      {"name": "git-commit", "keywords": ["version", "control", "revision"]},
+      {"name": "git-pull-request", "keywords": ["merge", "review", "version", "control"]},
+      {"name": "bug", "keywords": ["debug", "error"]},
+      {"name": "brackets", "keywords": ["code", "json", "array"]},
+      {"name": "command", "keywords": ["keyboard", "shortcut", "cmd"]},
+      {"name": "server", "keywords": ["hosting", "backend", "rack"]},
+      {"name": "package", "keywords": ["box", "module", "dependency"]},
+      {"name": "monitor", "keywords": ["display", "screen", "desktop"]}
+    ]},
+    {"id": "security", "label": "Security", "icons": [
+      {"name": "lock", "keywords": ["privacy", "password"]},
+      {"name": "lock-open", "keywords": ["unlock", "public"]},
+      {"name": "shield", "keywords": ["security", "protection"]},
+      {"name": "shield-check", "keywords": ["security", "safe", "verified"]},
+      {"name": "key", "keywords": ["password", "access", "credential"]},
+      {"name": "eye", "keywords": ["show", "visible"]},
+      {"name": "eye-off", "keywords": ["hide", "password", "hidden"]}
+    ]},
+    {"id": "media", "label": "Media", "icons": [
+      {"name": "play", "keywords": ["start", "media", "resume"]},
+      {"name": "pause", "keywords": ["hold", "media"]},
+      {"name": "stop", "keywords": ["halt", "media", "end"]},
+      {"name": "volume", "keywords": ["sound", "audio", "speaker"]},
+      {"name": "volume-off", "keywords": ["mute", "silent", "sound"]},
+      {"name": "camera", "keywords": ["photo", "take", "picture"]},
+      {"name": "video", "keywords": ["record", "film"]},
+      {"name": "microphone", "keywords": ["audio", "voice", "mic"]}
+    ]},
+    {"id": "utility", "label": "Utilities", "icons": [
+      {"name": "calendar", "keywords": ["date", "schedule", "event"]},
+      {"name": "clock", "keywords": ["time", "history"]},
+      {"name": "globe", "keywords": ["world", "language", "internet"]},
+      {"name": "bookmark", "keywords": ["save", "favorite"]},
+      {"name": "heart", "keywords": ["like", "favorite", "love"]},
+      {"name": "star", "keywords": ["favorite", "rating", "bookmark"]}
+    ]},
+    {"id": "status", "label": "Status", "icons": [
+      {"name": "info", "keywords": ["information", "about"]},
+      {"name": "circle-help", "keywords": ["question", "support"]},
+      {"name": "triangle-alert", "keywords": ["warning", "caution"]},
+      {"name": "circle-check", "keywords": ["success", "done", "complete"]},
+      {"name": "circle-x", "keywords": ["error", "failed", "cancel"]},
+      {"name": "circle-minus", "keywords": ["remove", "unavailable"]},
+      {"name": "loader", "keywords": ["spinner", "progress", "loading"]},
+      {"name": "octagon-alert", "keywords": ["danger", "error", "warning"]}
+    ]}
   ]
 }

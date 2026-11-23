@@ -1,5 +1,8 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "styles": [
+    "refined"
+  ],
   "svgAttrs": {
     "viewBox": "0 0 24 24",
     "fill": "none",
@@ -11,10 +14,14 @@
   "categories": [
     {
       "id": "navigation",
-      "label": "Навигация",
+      "label": "Navigation",
       "icons": [
         {
           "name": "home",
+          "keywords": [
+            "house",
+            "start"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -26,6 +33,11 @@
         },
         {
           "name": "compass",
+          "keywords": [
+            "direction",
+            "explore",
+            "navigation"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -45,6 +57,10 @@
         },
         {
           "name": "map-pin",
+          "keywords": [
+            "location",
+            "marker"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -64,6 +80,10 @@
         },
         {
           "name": "arrow-left",
+          "keywords": [
+            "back",
+            "previous"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -75,6 +95,10 @@
         },
         {
           "name": "arrow-right",
+          "keywords": [
+            "next",
+            "forward"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -86,6 +110,11 @@
         },
         {
           "name": "chevron-down",
+          "keywords": [
+            "expand",
+            "dropdown",
+            "open"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -97,6 +126,11 @@
         },
         {
           "name": "menu",
+          "keywords": [
+            "hamburger",
+            "navigation",
+            "lines"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -108,6 +142,11 @@
         },
         {
           "name": "search",
+          "keywords": [
+            "find",
+            "magnifying",
+            "glass"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -127,6 +166,12 @@
         },
         {
           "name": "external-link",
+          "keywords": [
+            "open",
+            "new",
+            "tab",
+            "outside"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -144,6 +189,11 @@
         },
         {
           "name": "layout-grid",
+          "keywords": [
+            "tiles",
+            "gallery",
+            "view"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -189,6 +239,12 @@
         },
         {
           "name": "sun",
+          "keywords": [
+            "light",
+            "theme",
+            "day",
+            "bright"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -208,6 +264,11 @@
         },
         {
           "name": "moon",
+          "keywords": [
+            "dark",
+            "theme",
+            "night"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -219,6 +280,12 @@
         },
         {
           "name": "x",
+          "keywords": [
+            "close",
+            "cancel",
+            "clear",
+            "dismiss"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -230,6 +297,12 @@
         },
         {
           "name": "check",
+          "keywords": [
+            "done",
+            "confirm",
+            "tick",
+            "selected"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -241,6 +314,10 @@
         },
         {
           "name": "arrow-up",
+          "keywords": [
+            "top",
+            "ascending"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -252,6 +329,10 @@
         },
         {
           "name": "arrow-down",
+          "keywords": [
+            "bottom",
+            "descending"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -263,6 +344,11 @@
         },
         {
           "name": "chevron-left",
+          "keywords": [
+            "back",
+            "previous",
+            "collapse"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -274,6 +360,10 @@
         },
         {
           "name": "chevron-right",
+          "keywords": [
+            "next",
+            "forward"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -285,6 +375,10 @@
         },
         {
           "name": "chevron-up",
+          "keywords": [
+            "collapse",
+            "close"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -298,10 +392,15 @@
     },
     {
       "id": "actions",
-      "label": "Действия",
+      "label": "Actions",
       "icons": [
         {
           "name": "plus",
+          "keywords": [
+            "add",
+            "create",
+            "new"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -313,6 +412,10 @@
         },
         {
           "name": "minus",
+          "keywords": [
+            "remove",
+            "subtract"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -324,6 +427,11 @@
         },
         {
           "name": "more-horizontal",
+          "keywords": [
+            "overflow",
+            "ellipsis",
+            "actions"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -335,6 +443,11 @@
         },
         {
           "name": "more-vertical",
+          "keywords": [
+            "overflow",
+            "ellipsis",
+            "actions"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -346,6 +459,11 @@
         },
         {
           "name": "settings",
+          "keywords": [
+            "preferences",
+            "gear",
+            "configure"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -365,6 +483,11 @@
         },
         {
           "name": "filter",
+          "keywords": [
+            "funnel",
+            "refine",
+            "sort"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -376,6 +499,10 @@
         },
         {
           "name": "edit",
+          "keywords": [
+            "pencil",
+            "modify"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -387,6 +514,10 @@
         },
         {
           "name": "copy",
+          "keywords": [
+            "duplicate",
+            "clipboard"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -408,6 +539,11 @@
         },
         {
           "name": "trash",
+          "keywords": [
+            "delete",
+            "remove",
+            "bin"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -419,6 +555,10 @@
         },
         {
           "name": "refresh",
+          "keywords": [
+            "reload",
+            "retry"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -432,10 +572,15 @@
     },
     {
       "id": "people",
-      "label": "Пользователи",
+      "label": "People",
       "icons": [
         {
           "name": "user",
+          "keywords": [
+            "person",
+            "account",
+            "profile"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -455,6 +600,10 @@
         },
         {
           "name": "users",
+          "keywords": [
+            "group",
+            "people"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -474,6 +623,11 @@
         },
         {
           "name": "user-plus",
+          "keywords": [
+            "add",
+            "person",
+            "invite"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -493,6 +647,11 @@
         },
         {
           "name": "user-check",
+          "keywords": [
+            "verified",
+            "approved",
+            "person"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -512,6 +671,10 @@
         },
         {
           "name": "user-minus",
+          "keywords": [
+            "remove",
+            "person"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -531,6 +694,11 @@
         },
         {
           "name": "contact-card",
+          "keywords": [
+            "id",
+            "badge",
+            "vcard"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -560,6 +728,11 @@
         },
         {
           "name": "circle-user",
+          "keywords": [
+            "avatar",
+            "profile",
+            "account"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -587,6 +760,11 @@
         },
         {
           "name": "badge-check",
+          "keywords": [
+            "verified",
+            "certified",
+            "approved"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -604,6 +782,11 @@
         },
         {
           "name": "message-circle",
+          "keywords": [
+            "comment",
+            "chat",
+            "bubble"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -615,6 +798,11 @@
         },
         {
           "name": "bell",
+          "keywords": [
+            "notification",
+            "alert",
+            "reminder"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -628,10 +816,14 @@
     },
     {
       "id": "communication",
-      "label": "Связь",
+      "label": "Communication",
       "icons": [
         {
           "name": "mail",
+          "keywords": [
+            "email",
+            "envelope"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -653,6 +845,10 @@
         },
         {
           "name": "chat-dots",
+          "keywords": [
+            "message",
+            "conversation"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -664,6 +860,10 @@
         },
         {
           "name": "phone",
+          "keywords": [
+            "call",
+            "telephone"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -675,6 +875,12 @@
         },
         {
           "name": "send",
+          "keywords": [
+            "submit",
+            "paper",
+            "plane",
+            "message"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -686,6 +892,11 @@
         },
         {
           "name": "inbox",
+          "keywords": [
+            "tray",
+            "messages",
+            "mail"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -697,6 +908,10 @@
         },
         {
           "name": "bell-off",
+          "keywords": [
+            "mute",
+            "notification"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -708,6 +923,11 @@
         },
         {
           "name": "link",
+          "keywords": [
+            "chain",
+            "url",
+            "hyperlink"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -719,6 +939,10 @@
         },
         {
           "name": "share",
+          "keywords": [
+            "send",
+            "export"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -754,6 +978,10 @@
         },
         {
           "name": "at-sign",
+          "keywords": [
+            "mention",
+            "email"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -775,10 +1003,14 @@
     },
     {
       "id": "finance",
-      "label": "Финансы",
+      "label": "Finance",
       "icons": [
         {
           "name": "wallet",
+          "keywords": [
+            "money",
+            "payment"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -796,6 +1028,11 @@
         },
         {
           "name": "credit-card",
+          "keywords": [
+            "payment",
+            "debit",
+            "card"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -807,6 +1044,11 @@
         },
         {
           "name": "banknote",
+          "keywords": [
+            "cash",
+            "bill",
+            "money"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -836,6 +1078,11 @@
         },
         {
           "name": "coins",
+          "keywords": [
+            "money",
+            "change",
+            "cash"
+          ],
           "shapes": [
             {
               "tag": "ellipse",
@@ -871,6 +1118,11 @@
         },
         {
           "name": "bank",
+          "keywords": [
+            "finance",
+            "institution",
+            "building"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -888,6 +1140,11 @@
         },
         {
           "name": "receipt",
+          "keywords": [
+            "invoice",
+            "bill",
+            "purchase"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -899,6 +1156,11 @@
         },
         {
           "name": "chart-line",
+          "keywords": [
+            "graph",
+            "trend",
+            "analytics"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -910,6 +1172,11 @@
         },
         {
           "name": "chart-bar",
+          "keywords": [
+            "graph",
+            "statistics",
+            "analytics"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -921,6 +1188,11 @@
         },
         {
           "name": "chart-pie",
+          "keywords": [
+            "graph",
+            "proportion",
+            "analytics"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -932,6 +1204,11 @@
         },
         {
           "name": "currency-exchange",
+          "keywords": [
+            "convert",
+            "money",
+            "swap"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -945,10 +1222,14 @@
     },
     {
       "id": "files-data",
-      "label": "Файлы и данные",
+      "label": "Files & data",
       "icons": [
         {
           "name": "file",
+          "keywords": [
+            "document",
+            "page"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -960,6 +1241,10 @@
         },
         {
           "name": "file-text",
+          "keywords": [
+            "document",
+            "text"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -977,6 +1262,9 @@
         },
         {
           "name": "folder",
+          "keywords": [
+            "directory"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -988,6 +1276,10 @@
         },
         {
           "name": "folder-open",
+          "keywords": [
+            "directory",
+            "browse"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -999,6 +1291,10 @@
         },
         {
           "name": "download",
+          "keywords": [
+            "save",
+            "export"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1010,6 +1306,10 @@
         },
         {
           "name": "upload",
+          "keywords": [
+            "send",
+            "import"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1021,6 +1321,11 @@
         },
         {
           "name": "database",
+          "keywords": [
+            "storage",
+            "data",
+            "sql"
+          ],
           "shapes": [
             {
               "tag": "ellipse",
@@ -1041,6 +1346,11 @@
         },
         {
           "name": "table",
+          "keywords": [
+            "grid",
+            "spreadsheet",
+            "rows"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1062,6 +1372,10 @@
         },
         {
           "name": "image",
+          "keywords": [
+            "photo",
+            "picture"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1091,6 +1405,10 @@
         },
         {
           "name": "archive",
+          "keywords": [
+            "box",
+            "storage"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1114,10 +1432,15 @@
     },
     {
       "id": "development",
-      "label": "Разработка",
+      "label": "Development",
       "icons": [
         {
           "name": "code",
+          "keywords": [
+            "source",
+            "html",
+            "markup"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1129,6 +1452,12 @@
         },
         {
           "name": "terminal",
+          "keywords": [
+            "console",
+            "shell",
+            "command",
+            "line"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1140,6 +1469,11 @@
         },
         {
           "name": "git-branch",
+          "keywords": [
+            "version",
+            "control",
+            "branch"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1175,6 +1509,11 @@
         },
         {
           "name": "git-commit",
+          "keywords": [
+            "version",
+            "control",
+            "revision"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1194,6 +1533,12 @@
         },
         {
           "name": "git-pull-request",
+          "keywords": [
+            "merge",
+            "review",
+            "version",
+            "control"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1229,6 +1574,10 @@
         },
         {
           "name": "bug",
+          "keywords": [
+            "debug",
+            "error"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1240,6 +1589,11 @@
         },
         {
           "name": "brackets",
+          "keywords": [
+            "code",
+            "json",
+            "array"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1251,6 +1605,11 @@
         },
         {
           "name": "command",
+          "keywords": [
+            "keyboard",
+            "shortcut",
+            "cmd"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1262,6 +1621,11 @@
         },
         {
           "name": "server",
+          "keywords": [
+            "hosting",
+            "backend",
+            "rack"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1293,6 +1657,11 @@
         },
         {
           "name": "package",
+          "keywords": [
+            "box",
+            "module",
+            "dependency"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1304,6 +1673,11 @@
         },
         {
           "name": "monitor",
+          "keywords": [
+            "display",
+            "screen",
+            "desktop"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1327,10 +1701,14 @@
     },
     {
       "id": "security",
-      "label": "Безопасность",
+      "label": "Security",
       "icons": [
         {
           "name": "lock",
+          "keywords": [
+            "privacy",
+            "password"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1358,6 +1736,10 @@
         },
         {
           "name": "lock-open",
+          "keywords": [
+            "unlock",
+            "public"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1385,6 +1767,10 @@
         },
         {
           "name": "shield",
+          "keywords": [
+            "security",
+            "protection"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1396,6 +1782,11 @@
         },
         {
           "name": "shield-check",
+          "keywords": [
+            "security",
+            "safe",
+            "verified"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1413,6 +1804,11 @@
         },
         {
           "name": "key",
+          "keywords": [
+            "password",
+            "access",
+            "credential"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1432,6 +1828,10 @@
         },
         {
           "name": "eye",
+          "keywords": [
+            "show",
+            "visible"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1451,6 +1851,11 @@
         },
         {
           "name": "eye-off",
+          "keywords": [
+            "hide",
+            "password",
+            "hidden"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1464,10 +1869,15 @@
     },
     {
       "id": "media",
-      "label": "Медиа",
+      "label": "Media",
       "icons": [
         {
           "name": "play",
+          "keywords": [
+            "start",
+            "media",
+            "resume"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1479,6 +1889,10 @@
         },
         {
           "name": "pause",
+          "keywords": [
+            "hold",
+            "media"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1504,6 +1918,11 @@
         },
         {
           "name": "stop",
+          "keywords": [
+            "halt",
+            "media",
+            "end"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1519,6 +1938,11 @@
         },
         {
           "name": "volume",
+          "keywords": [
+            "sound",
+            "audio",
+            "speaker"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1536,6 +1960,11 @@
         },
         {
           "name": "volume-off",
+          "keywords": [
+            "mute",
+            "silent",
+            "sound"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1553,6 +1982,11 @@
         },
         {
           "name": "camera",
+          "keywords": [
+            "photo",
+            "take",
+            "picture"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1572,6 +2006,10 @@
         },
         {
           "name": "video",
+          "keywords": [
+            "record",
+            "film"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1593,6 +2031,11 @@
         },
         {
           "name": "microphone",
+          "keywords": [
+            "audio",
+            "voice",
+            "mic"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1616,10 +2059,15 @@
     },
     {
       "id": "utility",
-      "label": "Утилиты",
+      "label": "Utilities",
       "icons": [
         {
           "name": "calendar",
+          "keywords": [
+            "date",
+            "schedule",
+            "event"
+          ],
           "shapes": [
             {
               "tag": "rect",
@@ -1641,6 +2089,10 @@
         },
         {
           "name": "clock",
+          "keywords": [
+            "time",
+            "history"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1660,6 +2112,11 @@
         },
         {
           "name": "globe",
+          "keywords": [
+            "world",
+            "language",
+            "internet"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1688,6 +2145,10 @@
         },
         {
           "name": "bookmark",
+          "keywords": [
+            "save",
+            "favorite"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1699,6 +2160,11 @@
         },
         {
           "name": "heart",
+          "keywords": [
+            "like",
+            "favorite",
+            "love"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1710,6 +2176,11 @@
         },
         {
           "name": "star",
+          "keywords": [
+            "favorite",
+            "rating",
+            "bookmark"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1723,10 +2194,14 @@
     },
     {
       "id": "status",
-      "label": "Статусы",
+      "label": "Status",
       "icons": [
         {
           "name": "info",
+          "keywords": [
+            "information",
+            "about"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1746,6 +2221,10 @@
         },
         {
           "name": "circle-help",
+          "keywords": [
+            "question",
+            "support"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1765,6 +2244,10 @@
         },
         {
           "name": "triangle-alert",
+          "keywords": [
+            "warning",
+            "caution"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1782,6 +2265,11 @@
         },
         {
           "name": "circle-check",
+          "keywords": [
+            "success",
+            "done",
+            "complete"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1801,6 +2289,11 @@
         },
         {
           "name": "circle-x",
+          "keywords": [
+            "error",
+            "failed",
+            "cancel"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1820,6 +2313,10 @@
         },
         {
           "name": "circle-minus",
+          "keywords": [
+            "remove",
+            "unavailable"
+          ],
           "shapes": [
             {
               "tag": "circle",
@@ -1839,6 +2336,11 @@
         },
         {
           "name": "loader",
+          "keywords": [
+            "spinner",
+            "progress",
+            "loading"
+          ],
           "shapes": [
             {
               "tag": "path",
@@ -1850,6 +2352,11 @@
         },
         {
           "name": "octagon-alert",
+          "keywords": [
+            "danger",
+            "error",
+            "warning"
+          ],
           "shapes": [
             {
               "tag": "path",

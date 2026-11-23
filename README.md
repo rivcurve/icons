@@ -1,37 +1,45 @@
 # Rivcurve
 
-В текущем наборе 108 линейных SVG в стиле Refined. В [каталоге](preview.html) можно найти иконку по имени и сравнить 16, 20 и 24 px на двух фонах. Откройте файл в браузере. Подключение к сети не требуется.
+Open-source interface icons. Clear at small sizes.
 
-- [Правила дизайна](DESIGN_GUIDELINES.md) задают сетку, линию, скругления, просветы и поведение в интерфейсе.
-- [Техническое задание](AGENT_SPEC.md) содержит инвентарь, критерии готовности и контракт будущих генераторов React и Vue.
-- `icons/<категория>/<имя>.svg` хранит редактируемую геометрию. `icons.json` задаёт состав и порядок каталога.
-- `generated/icons.json` содержит корневые атрибуты SVG, категории и однотипные записи с именем и списком фигур. Он служит общим входом генераторов. Меняйте исходники и пересобирайте данные.
+Rivcurve currently ships 108 icons in the **Refined** style: a 24 × 24 grid, a 2-unit rounded stroke and `currentColor`. A **Filled** style with one-to-one coverage and the SVG and React packages are on the [roadmap](docs/ROADMAP.md).
 
-Одобренная итерация Refined перенесена в основной каталог. В этом направлении обновлена 31 иконка из семейств профилей, диаграмм, папок, разработки, финансов и документов.
+> **Status: pre-alpha.** No packages are published yet. The React and Vue examples in the docs show the planned API.
 
-## Проверка и сборка
+## Repository layout
 
-Нужен Python 3.9 или новее. Запустите из папки проекта.
+- `icons/<style>/<category>/<name>.svg` holds the editable geometry. Only `refined` exists today.
+- `icons.json` is the manifest: categories, order, icon names and search keywords. Names are the public identifiers.
+- `generated/icons.json` is the normalized build output that the site and future package generators read. Edit the sources and rebuild it; never edit it by hand.
+- `preview.html` is a self-contained catalog for checking icons at 16, 20 and 24 px on light and dark backgrounds. Open `preview.html?qa` for a geometry report.
+- `apps/site` is the Next.js website with the searchable catalog and the docs.
+
+## Build and check the icons
+
+Requires Python 3.9 or newer.
 
 ```sh
 python3 scripts/icons.py build
 python3 scripts/icons.py check
 ```
 
-Команда `check` проверяет SVG и актуальность обоих сгенерированных файлов. Для геометрической проверки браузером откройте `preview.html?qa`. Внизу появится сводка о размерах, наследовании цвета и границах контура. Визуальную оценку проводите при масштабе 100%.
+`check` validates every SVG and the manifest, and verifies that both generated files are up to date.
 
-Набор проверен в Chrome на светлом и тёмном фоне в размерах 16, 20 и 24 px. Первоначальный лист из связанного чата доступен в текстовом описании, поэтому инвентарь и визуальное совпадение с листом требуют сверки с изображением. Rivcurve — имя проекта. Лицензия для публичного выпуска ещё не зафиксирована. Пакеты React и Vue запланированы на следующий этап.
+## Run the site
 
-## Сайт и выпуск
+```sh
+npm install
+npm run dev
+```
 
-[Выбранный дизайн главной](docs/design/HOMEPAGE.md) · [План проекта](docs/PROJECT_PLAN.md) · [Дорожная карта](docs/ROADMAP.md)
+The site opens at [localhost:3000](http://localhost:3000). `npm run build` exports a static site to `apps/site/out/`. See [deployment](docs/DEPLOYMENT.md) for Cloudflare Pages.
 
-## Запуск сайта
+The site uses [Arc UI](https://uiarc.dev/components) components mapped to Rivcurve tokens; see the [integration notes](apps/site/components/arc/README.md) for their sources and license.
 
-Из корня проекта выполните `npm install`, затем `npm run dev`. Главная открывается на [localhost:3000](http://localhost:3000). `npm run build` экспортирует сайт в `apps/site/out/`.
+## Contributing
 
-Примеры React и Vue показывают проектный API будущих пакетов.
+Icon requests and bug reports are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Refined design rules](DESIGN_GUIDELINES.md) first.
 
-Интерфейс сайта использует [Arc UI](https://uiarc.dev/components) для кнопок и фильтров. Компоненты получают цвета и размеры из токенов Rivcurve, включая тёмную тему. Источники компонентов и лицензия находятся в [описании интеграции](apps/site/components/arc/README.md).
+## License
 
-Подготовка [к размещению на Cloudflare Pages](docs/DEPLOYMENT.md) описывает сборку из корня репозитория и подключение домена. Планируемая открытая поставка включает SVG, исходники пакетов и сайт; перед публикацией фиксируем лицензию.
+[MIT](LICENSE) © vend1k12 and Rivcurve contributors.
