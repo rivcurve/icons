@@ -4,7 +4,11 @@ Open-source interface icons. Clear at small sizes.
 
 Rivcurve currently ships 108 icons in the **Refined** style: a 24 × 24 grid, a 2-unit rounded stroke and `currentColor`. A **Filled** style with one-to-one coverage and the SVG and React packages are on the [roadmap](docs/ROADMAP.md).
 
-> **Status: pre-alpha.** No packages are published yet. The React and Vue examples in the docs show the planned API.
+> **Status: alpha.** `@rivcurve/icons` and `@rivcurve/react` 0.1 are on npm. Icon names may still change before 1.0. Browse the catalog at [rivcurve.pages.dev](https://rivcurve.pages.dev).
+
+```sh
+npm install @rivcurve/react
+```
 
 ## Repository layout
 
