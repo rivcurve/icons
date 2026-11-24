@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@/components/icon";
 import { Button } from "@/components/arc/button/button";
 import { SearchField } from "@/components/arc/search-field/search-field";
@@ -16,6 +16,8 @@ const sizeOptions = sizes.map((size) => ({ value: String(size), label: `${size} 
 const categoryOptions = [{ value: "all", label: "All categories" }, ...categories.map(({ id, label }) => ({ value: id, label }))];
 
 export function Catalog() {
+  const searchInput = useRef<HTMLInputElement>(null);
+  const [searchReady, setSearchReady] = useState(false);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [size, setSize] = useState<Size>(24);
@@ -30,6 +32,7 @@ export function Catalog() {
     }
 
     readLocation();
+    setSearchReady(true);
     window.addEventListener("popstate", readLocation);
     return () => window.removeEventListener("popstate", readLocation);
   }, []);
@@ -45,6 +48,11 @@ export function Catalog() {
     window.history.replaceState(null, "", catalogHref(params));
   }
 
+  function clearFilters() {
+    change("", "all", size);
+    searchInput.current?.focus();
+  }
+
   const results = searchIcons(query, category);
 
   return (
@@ -52,8 +60,10 @@ export function Catalog() {
       <div className="catalog-controls">
         <div className="arc-search">
           <SearchField
+            ref={searchInput}
             label="Search icons"
-            placeholder="Search by name or keyword"
+            placeholder={searchReady ? "Search by name or keyword" : "Loading search…"}
+            disabled={!searchReady}
             value={query}
             onValueChange={(value) => change(value, category, size)}
           />
@@ -83,7 +93,7 @@ export function Catalog() {
           ))}
         </ul>
       ) : (
-        <div className="catalog-empty"><p>No icons match your filters.</p><Button type="button" variant="secondary" className="arc-action" onClick={() => change("", "all", size)}>Clear filters</Button></div>
+        <div className="catalog-empty"><p>No icons match your filters.</p><Button type="button" variant="secondary" className="arc-action" onClick={clearFilters}>Clear filters</Button></div>
       )}
     </section>
   );

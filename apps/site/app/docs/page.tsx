@@ -138,7 +138,7 @@ export default function DocsPage() {
         <section aria-labelledby="contributing">
           <h2 id="contributing">Contributing</h2>
           <p>For an icon request, describe the interface action or state it represents, link a similar Refined icon if one exists, and include a screenshot or sketch. When editing a shape, compare it alongside its neighbors at 16, 20, and 24 px.</p>
-          <p>Read the <a href={`${repository}/blob/main/DESIGN_GUIDELINES.md`}>icon design guidelines</a> or <a href={issues}>view issues on GitHub</a>. These links require repository access during the private preview.</p>
+          <p>Read the <a href={`${repository}/blob/main/DESIGN_GUIDELINES.md`}>icon design guidelines</a> or <a href={issues}>view issues on GitHub</a>.</p>
         </section>
 
         <section aria-labelledby="releases">

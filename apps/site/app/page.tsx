@@ -46,7 +46,7 @@ export default function Home() {
       <section className="wrap intro-section" aria-labelledby="use-rivcurve">
         <div>
           <h2 id="use-rivcurve">Use Rivcurve</h2>
-          <p>Grab an SVG today or explore the planned React and Vue components.</p>
+          <p>Use the React alpha or download an SVG. Vue components are planned.</p>
         </div>
         <PackageExample />
       </section>
