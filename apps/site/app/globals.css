@@ -111,7 +111,7 @@ svg { flex: none; vertical-align: middle; }
   .demo-body td, .demo-body th { padding-inline: .48rem; }
   .demo-sidebar { padding: .35rem; }
   .demo-sidebar li { padding-inline: .3rem; }
-  .intro-section { grid-template-columns: 1fr; gap: 1rem; padding-block: 1.6rem; }
+  .intro-section { grid-template-columns: minmax(0, 1fr); gap: 1rem; padding-block: 1.6rem; }
 }
 
 @media (max-width: 365px) {
